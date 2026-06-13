@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0d1117">
 <title>経営の「なぜ」を整理する | Path-Flow for 経営者</title>
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAEvUlEQVR4nO2YW2xTdRzHP/9z2u603aWj624IiImMa5wZBgOagEowQTEOjIm+6BIfwMTE+OCLL774YGKUGB80mJiYSIgmEqIsgHgFBIaAbjDAEWFbd2Ed3bq16+Wc/9+HrsCC8cW2fwzn89I0pz3nez7/3/8qlFKKuxhDdwDduAJ0B9CNK0B3AN24AnQH0I0rQHcA3bgCdAfQjStAdwDduAJ0B9CNK0B3AN14tD1ZgSJ/GCUAhNASo+wClOMAIEwTwc2XVlKilEIYBqKMMkS5zgSVlAjDmPM9k5hCOg6+QACP37p5zXEQplmOWOWpAOVIhJl/+csHf+DPfQcY6+5l5no8LyAYJLR4IYs2rKPl2c1UNtZDoV1KXA0lr4BCa46c7eHHt94heqwLISU+qwLTa4IQSNshl81hZ22CzQ089NorrN7Rkf+/UiXtEiUVUHj5i/s6ObD9TWQ6TXW4Gr8PfB4waUKhQFMjNNZDY0QQDglqKhyq6mroev9jktfGEKZBKXpr0buAUgrDNEleG+PS3k5WvdhOy8Z1hO+bjxXwYKTGUYO9nDtwgtOHL2DbkkhzNataTBbWg2EopBTkcoqMU8HQ1REufPUNbTtezleBp7jTY9G7QGHUTgxEmRmP09C6cu712c/0dIbBI7/S/dluLh/6GSdns+mJGpbe6yEWkwyPSkZigv6BBM0bHqV9z678WGAUdywo24Lo34geO8HxnZ8yfOQI7ettLMti+JpJdNTg6mAKWRum4+RBvMFAfn1QxBmhJLOAnc4wfqmPoVNnifVcJDkyigIqI3WEl7fQtPoBGlpXYsyu9uavXcPWtWsYOH4as6cT79AZrNwYvqRNsN6Pf9kKDJ8XyFdQMWugqBVQKP/h335n5Ew3diZLbjrJ1OAQYz29jHX3khofxwqFaGprZUn7ZpZtfYpgQ2TOfZycjZyKY6ez+OaFMS2L+JV+ahctKPp6oKxdYHIgSt+3h+jd/TVDJ0/j5HLULb2flue2sHTb00SWt9y26ktEh+na+QkLHnmYJVs23ban+K+URoBSs7u7wlPAMIwredks/R1Hqov1xelZwOSmrYQ29gB9M+wK0B3AN64A3QF04wrQHUA3rgDdAXTjCtAdQDeuAN0BdOMK0B1AN64A3QF04wrQHUA3bgCdAfQjStAdwDduAJ0B9CNK0B3AN24AnQH0I0rQHcA3bgCdAfQzd8/2AfG4+eAogAAAABJRU5ErkJggg==">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
@@ -17,47 +16,37 @@
   gtag('js', new Date());
   gtag('config', 'G-RWWKQXHSBV');
 </script>
-<!-- Amplitude SDK v2.11.1 -->
+<!-- Amplitude SDK v2.11.1 (integrity属性なし §2-1) -->
 <script src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"></script>
 <style>
 /* ══════════════════════════════════════
-   DESIGN TOKENS — keiei.pathflow.org
-   ダークネイビー × ゴールド × クリムゾン
+   DESIGN TOKENS
 ══════════════════════════════════════ */
 :root {
   --bg:             #0d1117;
-  --bg-mid:         #111820;
   --bg-card:        #161b22;
   --bg-card-hover:  #1c2330;
   --surface:        rgba(255,255,255,0.035);
   --surface-hover:  rgba(255,255,255,0.062);
   --border:         rgba(180,210,240,0.1);
   --border-active:  rgba(180,210,240,0.32);
-
   --gold:           #c8a45a;
   --gold-light:     #e0c07a;
   --gold-dim:       rgba(200,164,90,0.28);
   --gold-glow:      rgba(200,164,90,0.08);
-
   --crimson:        #8b2020;
   --crimson-bright: #a83030;
   --crimson-glow:   rgba(139,32,32,0.25);
-
   --text-primary:   #eef4fa;
   --text-secondary: #8da8c0;
   --text-muted:     #4a6880;
-
   --serif:   'Noto Serif JP', serif;
   --display: 'Cormorant Garamond', serif;
   --sans:    'Noto Sans JP', sans-serif;
-
-  --radius: 0px;
   --transition: 0.25s ease;
 }
-
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-
 body {
   background: var(--bg);
   color: var(--text-primary);
@@ -66,26 +55,23 @@ body {
   line-height: 1.8;
   overflow-x: hidden;
 }
-
-/* ── AMBIENT BACKGROUND ── */
 body::before {
   content:'';
   position:fixed; inset:0;
   background:
     radial-gradient(ellipse 70% 55% at 15% 8%,  rgba(40,80,140,0.14) 0%, transparent 55%),
     radial-gradient(ellipse 55% 45% at 85% 85%, rgba(25,55,100,0.1)  0%, transparent 55%),
-    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(139,32,32,0.04) 0%, transparent 60%),
     linear-gradient(rgba(140,180,220,0.018) 1px, transparent 1px),
     linear-gradient(90deg, rgba(140,180,220,0.018) 1px, transparent 1px);
-  background-size: auto, auto, auto, 72px 72px, 72px 72px;
+  background-size: auto, auto, 72px 72px, 72px 72px;
   pointer-events:none;
-  z-index:0;
+  z-index:-1;
 }
 
 /* ── NAV ── */
 nav {
   position:fixed; top:0; left:0; right:0;
-  z-index:100;
+  z-index:200;
   height:64px;
   display:flex; align-items:center;
   padding:0 48px;
@@ -99,35 +85,22 @@ nav.scrolled {
 }
 .nav-logo {
   font-family:var(--display);
-  font-size:13px;
-  letter-spacing:0.35em;
-  color:var(--gold);
-  text-decoration:none;
-  text-transform:uppercase;
-  margin-right:auto;
+  font-size:13px; letter-spacing:0.35em;
+  color:var(--gold); text-decoration:none;
+  text-transform:uppercase; margin-right:auto;
 }
 .nav-links { display:flex; gap:32px; list-style:none; }
 .nav-links a {
-  font-family:var(--sans);
-  font-size:11px; font-weight:300;
-  letter-spacing:0.18em;
-  color:var(--text-secondary);
-  text-decoration:none;
-  transition:color var(--transition);
+  font-family:var(--sans); font-size:11px; font-weight:300;
+  letter-spacing:0.18em; color:var(--text-secondary);
+  text-decoration:none; transition:color var(--transition);
 }
 .nav-links a:hover { color:var(--gold-light); }
 
 /* ── WRAPPER ── */
-.wrapper {
-  max-width:920px;
-  margin:0 auto;
-  padding:0 40px;
-  position:relative; z-index:1;
-}
+.wrapper { max-width:920px; margin:0 auto; padding:0 40px; position:relative; z-index:1; }
 
-/* ══════════════════════════════
-   SECTION 1 — HERO
-══════════════════════════════ */
+/* ── HERO ── */
 #top {
   min-height:100vh;
   display:flex; flex-direction:column; justify-content:center;
@@ -135,573 +108,228 @@ nav.scrolled {
   border-bottom:1px solid var(--border);
   position:relative;
 }
-
 .hero-inner { opacity:0; transform:translateY(28px); animation:fadeUp 1s 0.1s cubic-bezier(.22,1,.36,1) forwards; }
-
-.eyebrow {
-  display:flex; align-items:center; gap:14px;
-  margin-bottom:44px;
-}
+.eyebrow { display:flex; align-items:center; gap:14px; margin-bottom:44px; }
 .eyebrow-line { width:40px; height:1px; background:linear-gradient(to right, var(--gold), transparent); flex-shrink:0; }
-.eyebrow-text {
-  font-family:var(--display);
-  font-size:11px; letter-spacing:0.48em;
-  text-transform:uppercase; color:var(--gold);
-}
-
+.eyebrow-text { font-family:var(--display); font-size:11px; letter-spacing:0.48em; text-transform:uppercase; color:var(--gold); }
 .hero-catch {
-  font-family:var(--serif);
-  font-weight:300;
-  font-size:clamp(30px, 4.5vw, 52px);
-  line-height:1.6;
-  letter-spacing:0.03em;
-  color:var(--text-primary);
-  margin-bottom:20px;
+  font-family:var(--serif); font-weight:300;
+  font-size:clamp(28px, 4.5vw, 52px);
+  line-height:1.6; letter-spacing:0.03em;
+  color:var(--text-primary); margin-bottom:20px;
 }
 .hero-catch .accent { color:var(--gold-light); }
-.hero-catch .line-rule {
-  display:inline-block;
-  width:2px; height:1em;
-  background:var(--crimson);
-  vertical-align:middle;
-  margin:0 6px;
-  opacity:0.6;
-}
-
-.hero-sub {
-  font-family:var(--display);
-  font-style:italic;
-  font-size:20px;
-  color:var(--gold);
-  letter-spacing:0.12em;
-  margin-bottom:36px;
-  opacity:0.85;
-}
-
-.hero-body {
-  font-family:var(--sans);
-  font-size:14px; font-weight:300;
-  color:var(--text-secondary);
-  line-height:2.4;
-  max-width:500px;
-  margin-bottom:52px;
-}
-
-.hero-targets {
-  display:flex; flex-wrap:wrap; gap:9px;
-  margin-bottom:52px;
-}
+.hero-sub { font-family:var(--display); font-style:italic; font-size:20px; color:var(--gold); letter-spacing:0.12em; margin-bottom:36px; opacity:0.85; }
+.hero-body { font-family:var(--sans); font-size:14px; font-weight:300; color:var(--text-secondary); line-height:2.4; max-width:500px; margin-bottom:52px; }
+.hero-targets { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:52px; }
 .target-tag {
-  font-family:var(--sans);
-  font-size:11px; font-weight:300;
-  letter-spacing:0.1em;
-  color:var(--text-secondary);
-  border:1px solid var(--border-active);
-  padding:6px 16px;
-  background:var(--surface);
-  transition:border-color var(--transition), color var(--transition);
+  font-family:var(--sans); font-size:11px; font-weight:300;
+  letter-spacing:0.1em; color:var(--text-secondary);
+  border:1px solid var(--border-active); padding:6px 16px;
+  background:var(--surface); transition:border-color var(--transition), color var(--transition);
 }
-.target-tag:hover { border-color:var(--gold-dim); color:var(--gold); }
-
 .hero-btns { display:flex; flex-wrap:wrap; gap:14px; }
-
 .btn-primary {
-  font-family:var(--serif);
-  font-size:13px; letter-spacing:0.22em;
-  color:var(--text-primary);
-  background:var(--crimson);
-  border:1px solid var(--crimson-bright);
-  padding:14px 40px;
-  cursor:pointer; text-decoration:none;
+  font-family:var(--serif); font-size:13px; letter-spacing:0.22em;
+  color:var(--text-primary); background:var(--crimson);
+  border:1px solid var(--crimson-bright); padding:14px 40px;
+  cursor:pointer; text-decoration:none; display:inline-block;
   transition:background var(--transition), box-shadow var(--transition);
-  display:inline-block;
 }
 .btn-primary:hover { background:var(--crimson-bright); box-shadow:0 0 20px var(--crimson-glow); }
 .btn-ghost {
-  font-family:var(--sans);
-  font-size:12px; font-weight:300;
-  letter-spacing:0.18em;
-  color:var(--gold);
-  background:transparent;
-  border:1px solid var(--gold-dim);
-  padding:14px 32px;
-  cursor:pointer; text-decoration:none;
+  font-family:var(--sans); font-size:12px; font-weight:300;
+  letter-spacing:0.18em; color:var(--gold); background:transparent;
+  border:1px solid var(--gold-dim); padding:14px 32px;
+  cursor:pointer; text-decoration:none; display:inline-block;
   transition:border-color var(--transition), background var(--transition);
-  display:inline-block;
 }
 .btn-ghost:hover { border-color:var(--gold); background:var(--gold-glow); }
-
-/* SCROLL HINT */
 .scroll-hint {
-  position:absolute; bottom:36px; left:50%;
-  transform:translateX(-50%);
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
   display:flex; flex-direction:column; align-items:center; gap:8px;
   opacity:0; animation:fadeUp 1s 1.2s forwards;
 }
-.scroll-hint span {
-  font-family:var(--display);
-  font-size:9px; letter-spacing:0.42em;
-  text-transform:uppercase; color:var(--text-muted);
-}
-.scroll-line {
-  width:1px; height:36px;
-  background:linear-gradient(to bottom, var(--gold-dim), transparent);
-  animation:scrollPulse 2.2s 1.8s ease-in-out infinite;
-}
-@keyframes scrollPulse {
-  0%,100% { opacity:0.35; transform:scaleY(1); }
-  50%      { opacity:1;   transform:scaleY(1.25); }
-}
+.scroll-hint span { font-family:var(--display); font-size:9px; letter-spacing:0.42em; text-transform:uppercase; color:var(--text-muted); }
+.scroll-line { width:1px; height:36px; background:linear-gradient(to bottom, var(--gold-dim), transparent); animation:scrollPulse 2.2s 1.8s ease-in-out infinite; }
+@keyframes scrollPulse { 0%,100%{opacity:0.35;transform:scaleY(1);}50%{opacity:1;transform:scaleY(1.25);} }
 
-/* ══════════════════════════════
-   SECTION — 痛みナラティブ (新規)
-   スクロールするごとに経営の痛みに共感させる
-══════════════════════════════ */
-#narrative {
-  padding:100px 0;
-  border-bottom:1px solid var(--border);
-}
-
-.narrative-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:2px;
-}
+/* ── NARRATIVE ── */
+#narrative { padding:100px 0; border-bottom:1px solid var(--border); }
+.narrative-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
 .narrative-card {
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  padding:40px 36px;
-  position:relative;
-  overflow:hidden;
+  background:var(--bg-card); border:1px solid var(--border);
+  padding:40px 36px; position:relative; overflow:hidden;
   transition:border-color var(--transition), background var(--transition);
-}
-.narrative-card::after {
-  content:'';
-  position:absolute; bottom:0; left:0; right:0;
-  height:2px;
-  background:linear-gradient(to right, transparent, var(--gold-dim), transparent);
-  opacity:0;
-  transition:opacity 0.4s;
 }
 .narrative-card:hover { border-color:var(--border-active); background:var(--bg-card-hover); }
-.narrative-card:hover::after { opacity:1; }
-
-.narrative-label {
-  font-family:var(--display);
-  font-size:10px; letter-spacing:0.45em;
-  text-transform:uppercase; color:var(--gold);
-  margin-bottom:20px;
-  display:flex; align-items:center; gap:10px;
-}
-.narrative-label::before {
-  content:''; width:24px; height:1px;
-  background:var(--gold-dim); flex-shrink:0;
-}
-.narrative-question {
-  font-family:var(--serif);
-  font-size:clamp(14px, 2vw, 17px);
-  font-weight:300; line-height:1.9;
-  color:var(--text-primary);
-  margin-bottom:16px;
-  letter-spacing:0.03em;
-}
-.narrative-answer {
-  font-family:var(--sans);
-  font-size:12px; font-weight:300;
-  color:var(--text-secondary);
-  line-height:2.1;
-  letter-spacing:0.06em;
-}
-
-.narrative-divider {
-  grid-column: 1 / -1;
-  text-align:center;
-  padding:56px 0 0;
-}
-.narrative-divider-text {
-  font-family:var(--display);
-  font-style:italic;
-  font-size:clamp(20px, 3.5vw, 32px);
-  font-weight:300;
-  color:var(--text-primary);
-  letter-spacing:0.06em;
-  line-height:1.7;
-}
+.narrative-label { font-family:var(--display); font-size:10px; letter-spacing:0.45em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+.narrative-label::before { content:''; width:24px; height:1px; background:var(--gold-dim); flex-shrink:0; }
+.narrative-question { font-family:var(--serif); font-size:clamp(14px, 2vw, 17px); font-weight:300; line-height:1.9; color:var(--text-primary); margin-bottom:16px; }
+.narrative-answer { font-family:var(--sans); font-size:12px; font-weight:300; color:var(--text-secondary); line-height:2.1; }
+.narrative-divider { grid-column:1/-1; text-align:center; padding:56px 0 0; }
+.narrative-divider-text { font-family:var(--display); font-style:italic; font-size:clamp(20px, 3.5vw, 32px); font-weight:300; color:var(--text-primary); letter-spacing:0.06em; line-height:1.7; }
 .narrative-divider-text em { color:var(--gold-light); font-style:normal; }
 
-/* ══════════════════════════════
-   SECTION HEADER (共通)
-══════════════════════════════ */
-.section-head {
-  display:flex; align-items:baseline; gap:20px;
-  margin-bottom:56px;
-}
-.sec-num {
-  font-family:var(--display);
-  font-size:56px; font-weight:300;
-  color:rgba(140,180,220,0.07); line-height:1;
-}
-.sec-title {
-  font-family:var(--display);
-  font-size:26px; font-weight:400;
-  color:var(--text-primary); letter-spacing:0.1em;
-  display:block;
-}
-.sec-sub {
-  font-family:var(--sans);
-  font-size:10px; font-weight:300;
-  color:var(--text-muted); letter-spacing:0.22em;
-  text-transform:uppercase; display:block; margin-top:4px;
-}
+/* ── SECTION HEAD ── */
+.section-head { display:flex; align-items:baseline; gap:20px; margin-bottom:56px; }
+.sec-num { font-family:var(--display); font-size:56px; font-weight:300; color:rgba(140,180,220,0.07); line-height:1; }
+.sec-title { font-family:var(--display); font-size:26px; font-weight:400; color:var(--text-primary); letter-spacing:0.1em; display:block; }
+.sec-sub { font-family:var(--sans); font-size:10px; font-weight:300; color:var(--text-muted); letter-spacing:0.22em; text-transform:uppercase; display:block; margin-top:4px; }
 
-/* ══════════════════════════════
-   SECTION 2 — 診断フォーム
-══════════════════════════════ */
-#shindan {
-  padding:100px 0;
-  border-bottom:1px solid var(--border);
-}
-
-.shindan-intro {
-  font-family:var(--sans);
-  font-size:13px; font-weight:300;
-  color:var(--text-secondary);
-  line-height:2.3; max-width:560px;
-  margin-bottom:48px; letter-spacing:0.06em;
-}
-
-/* Fields */
-.field {
-  margin-bottom:8px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  padding:24px 28px;
-  transition:border-color var(--transition), background var(--transition);
-}
+/* ── 診断フォーム ── */
+#shindan { padding:100px 0; border-bottom:1px solid var(--border); }
+.shindan-intro { font-family:var(--sans); font-size:13px; font-weight:300; color:var(--text-secondary); line-height:2.3; max-width:560px; margin-bottom:48px; }
+.field { margin-bottom:8px; background:var(--surface); border:1px solid var(--border); padding:24px 28px; transition:border-color var(--transition), background var(--transition); }
 .field.active { border-color:var(--border-active); background:var(--surface-hover); }
-
-.field-header {
-  display:flex; align-items:center; gap:14px;
-  margin-bottom:16px;
-}
-.field-num {
-  font-family:var(--display);
-  font-size:11px; color:var(--gold); letter-spacing:0.28em; min-width:20px;
-}
-.field-label {
-  font-family:var(--sans);
-  font-size:12px; font-weight:300;
-  color:var(--text-secondary); letter-spacing:0.1em; flex:1;
-}
-.field-check {
-  width:16px; height:16px;
-  border:1px solid rgba(160,200,240,0.18);
-  border-radius:50%; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  transition:all 0.3s;
-}
+.field-header { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.field-num { font-family:var(--display); font-size:11px; color:var(--gold); letter-spacing:0.28em; min-width:20px; }
+.field-label { font-family:var(--sans); font-size:12px; font-weight:300; color:var(--text-secondary); letter-spacing:0.1em; flex:1; }
+.field-check { width:16px; height:16px; border:1px solid rgba(160,200,240,0.18); border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.3s; }
 .field-check.done { background:var(--gold); border-color:var(--gold); }
-.field-check.done::after {
-  content:''; width:3px; height:6px;
-  border-right:1.5px solid var(--bg);
-  border-bottom:1.5px solid var(--bg);
-  transform:rotate(40deg) translateY(-1px); display:block;
-}
-
+.field-check.done::after { content:''; width:3px; height:6px; border-right:1.5px solid var(--bg); border-bottom:1.5px solid var(--bg); transform:rotate(40deg) translateY(-1px); display:block; }
 .options { display:flex; flex-wrap:wrap; gap:7px; }
-.opt {
-  appearance:none;
-  background:transparent;
-  border:1px solid rgba(140,180,220,0.15);
-  color:var(--text-secondary);
-  font-family:var(--sans); font-size:12px; font-weight:300;
-  padding:7px 18px;
-  cursor:pointer;
-  transition:all var(--transition); letter-spacing:0.06em;
-}
+.opt { appearance:none; background:transparent; border:1px solid rgba(140,180,220,0.15); color:var(--text-secondary); font-family:var(--sans); font-size:12px; font-weight:300; padding:7px 18px; cursor:pointer; transition:all var(--transition); }
 .opt:hover { border-color:var(--gold); color:var(--gold-light); background:rgba(200,164,90,0.04); }
 .opt.selected { background:rgba(200,164,90,0.09); border-color:var(--gold); color:var(--gold-light); }
-
 .submit-area { margin-top:40px; }
-.btn-submit {
-  appearance:none;
-  background:var(--crimson); border:1px solid var(--crimson-bright);
-  color:var(--text-primary);
-  font-family:var(--serif); font-size:14px; letter-spacing:0.3em;
-  padding:15px 56px;
-  cursor:pointer; transition:background var(--transition), box-shadow var(--transition);
-  display:inline-flex; align-items:center; gap:12px;
-}
-.btn-submit:hover:not(:disabled) { background:var(--crimson-bright); box-shadow:0 0 24px var(--crimson-glow); }
+.btn-submit { appearance:none; background:var(--crimson); border:1px solid var(--crimson-bright); color:var(--text-primary); font-family:var(--serif); font-size:14px; letter-spacing:0.3em; padding:15px 56px; cursor:pointer; transition:background var(--transition); display:inline-flex; align-items:center; gap:12px; }
+.btn-submit:hover:not(:disabled) { background:var(--crimson-bright); }
 .btn-submit:disabled { opacity:0.3; cursor:not-allowed; }
-.btn-submit .spinner {
-  display:none;
-  width:14px; height:14px;
-  border:1.5px solid rgba(255,255,255,0.2);
-  border-top-color:#fff;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-}
+.btn-submit .spinner { display:none; width:14px; height:14px; border:1.5px solid rgba(255,255,255,0.2); border-top-color:#fff; border-radius:50%; animation:spin 1s linear infinite; }
 .btn-submit.loading .spinner { display:block; }
 .btn-submit.loading .btn-text { opacity:0.6; }
-
-.submit-note {
-  font-family:var(--sans); font-size:11px; font-weight:300;
-  color:var(--text-muted); letter-spacing:0.1em; margin-top:14px;
-}
-
-#loading {
-  display:none; padding:80px 0; text-align:center;
-}
-.loading-ring {
-  width:40px; height:40px;
-  border:1px solid rgba(140,180,220,0.08);
-  border-top-color:var(--gold);
-  border-radius:50%;
-  animation:spin 1.6s linear infinite;
-  margin:0 auto 24px;
-}
-.loading-label {
-  font-family:var(--display); font-size:12px;
-  letter-spacing:0.45em; color:var(--gold); text-transform:uppercase;
-}
+.submit-note { font-family:var(--sans); font-size:11px; font-weight:300; color:var(--text-muted); margin-top:14px; }
+#loading { display:none; padding:80px 0; text-align:center; }
+.loading-ring { width:40px; height:40px; border:1px solid rgba(140,180,220,0.08); border-top-color:var(--gold); border-radius:50%; animation:spin 1.6s linear infinite; margin:0 auto 24px; }
+.loading-label { font-family:var(--display); font-size:12px; letter-spacing:0.45em; color:var(--gold); text-transform:uppercase; }
 @keyframes spin { to { transform:rotate(360deg); } }
+#diag-error { display:none; padding:14px 22px; border:1px solid var(--crimson); background:rgba(100,15,15,0.14); color:#c07060; font-family:var(--sans); font-size:12px; font-weight:300; margin-top:22px; }
 
-#error {
-  display:none; padding:14px 22px;
-  border:1px solid var(--crimson); background:rgba(100,15,15,0.14);
-  color:#c07060; font-family:var(--sans); font-size:12px; font-weight:300;
-  margin-top:22px;
-}
-
-/* Result */
+/* ── 診断結果 ── */
 #result { display:none; padding:52px 0 0; }
-.result-eyebrow {
-  display:flex; align-items:center; gap:14px; margin-bottom:36px;
-}
+.result-eyebrow { display:flex; align-items:center; gap:14px; margin-bottom:36px; }
 .result-eyebrow-line { width:40px; height:1px; background:linear-gradient(to right, var(--gold), transparent); }
-.result-eyebrow-text {
-  font-family:var(--display); font-size:19px; font-weight:400;
-  color:var(--text-primary); letter-spacing:0.14em;
-}
-
-.result-block {
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  padding:28px 30px 28px 36px;
-  margin-bottom:10px; position:relative;
-  opacity:0; transform:translateY(12px);
-  transition:opacity 0.55s ease, transform 0.55s ease;
-}
-.result-block::before {
-  content:''; position:absolute;
-  left:0; top:0; bottom:0; width:2px;
-  background:linear-gradient(to bottom, var(--crimson), var(--gold));
-}
+.result-eyebrow-text { font-family:var(--display); font-size:19px; font-weight:400; color:var(--text-primary); letter-spacing:0.14em; }
+.result-block { background:var(--bg-card); border:1px solid var(--border); padding:28px 30px 28px 36px; margin-bottom:10px; position:relative; opacity:0; transform:translateY(12px); transition:opacity 0.55s ease, transform 0.55s ease; }
+.result-block::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom, var(--crimson), var(--gold)); }
 .result-block.visible { opacity:1; transform:translateY(0); }
-.result-block-tag {
-  font-family:var(--display); font-size:9px; letter-spacing:0.42em;
-  color:var(--gold); text-transform:uppercase; margin-bottom:5px;
-}
-.result-block-label {
-  font-family:var(--sans); font-size:11px; font-weight:300;
-  color:var(--text-muted); letter-spacing:0.12em; margin-bottom:14px;
-}
-.result-text {
-  font-family:var(--serif); font-size:15px; font-weight:300;
-  line-height:2.2; color:var(--text-primary);
-}
+.result-block-tag { font-family:var(--display); font-size:9px; letter-spacing:0.42em; color:var(--gold); text-transform:uppercase; margin-bottom:5px; }
+.result-block-label { font-family:var(--sans); font-size:11px; font-weight:300; color:var(--text-muted); letter-spacing:0.12em; margin-bottom:14px; }
+.result-text { font-family:var(--serif); font-size:15px; font-weight:300; line-height:2.2; color:var(--text-primary); }
 
-/* CTA after result */
-.result-cta {
-  display:none;
-  margin-top:36px;
-  padding:36px;
-  background:var(--bg-card);
-  border:1px solid var(--border-active);
-  text-align:center;
+/* ── 予約フォーム ── */
+#booking { display:none; margin-top:48px; background:var(--bg-card); border:1px solid var(--border-active); padding:44px 40px; }
+.booking-head { margin-bottom:32px; }
+.booking-title { font-family:var(--display); font-size:22px; font-weight:400; color:var(--text-primary); letter-spacing:0.12em; margin-bottom:8px; }
+.booking-sub { font-family:var(--sans); font-size:12px; font-weight:300; color:var(--text-secondary); line-height:2; }
+.bfield { margin-bottom:18px; }
+.bfield label { font-family:var(--sans); font-size:11px; font-weight:300; color:var(--text-muted); letter-spacing:0.14em; display:block; margin-bottom:8px; }
+.bfield label .req { color:var(--crimson-bright); margin-left:4px; }
+.bfield input, .bfield select {
+  width:100%; background:rgba(255,255,255,0.04); border:1px solid var(--border);
+  color:var(--text-primary); font-family:var(--sans); font-size:13px; font-weight:300;
+  padding:11px 14px; outline:none;
+  transition:border-color var(--transition);
+  appearance:none; -webkit-appearance:none;
 }
-.result-cta p {
-  font-family:var(--sans); font-size:13px; font-weight:300;
-  color:var(--text-secondary); line-height:2.2;
-  margin-bottom:24px; letter-spacing:0.06em;
-}
-.result-cta.visible { display:block; }
+.bfield input:focus, .bfield select:focus { border-color:var(--border-active); }
+.bfield select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238da8c0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; }
+.bfield select option { background:#1c2330; color:var(--text-primary); }
+.bfield input[type="date"]::-webkit-calendar-picker-indicator { filter:invert(0.6); cursor:pointer; }
+.brow { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.btn-booking { width:100%; appearance:none; background:var(--crimson); border:1px solid var(--crimson-bright); color:var(--text-primary); font-family:var(--serif); font-size:14px; letter-spacing:0.3em; padding:16px; cursor:pointer; margin-top:8px; display:inline-flex; align-items:center; justify-content:center; gap:12px; transition:background var(--transition); }
+.btn-booking:hover:not(:disabled) { background:var(--crimson-bright); }
+.btn-booking:disabled { opacity:0.3; cursor:not-allowed; }
+.btn-booking .spinner { display:none; width:14px; height:14px; border:1.5px solid rgba(255,255,255,0.2); border-top-color:#fff; border-radius:50%; animation:spin 1s linear infinite; }
+.btn-booking.loading .spinner { display:block; }
+#booking-error { display:none; padding:12px 18px; border:1px solid var(--crimson); background:rgba(100,15,15,0.14); color:#c07060; font-family:var(--sans); font-size:12px; margin-top:14px; }
+#booking-done { display:none; padding:32px; text-align:center; }
+.booking-done-title { font-family:var(--display); font-size:22px; color:var(--gold-light); letter-spacing:0.14em; margin-bottom:12px; }
+.booking-done-body { font-family:var(--sans); font-size:13px; color:var(--text-secondary); line-height:2.2; }
 
-/* ══════════════════════════════
-   SECTION 3 — COLUMN
-══════════════════════════════ */
-#column {
-  padding:100px 0;
-  border-bottom:1px solid var(--border);
-}
-
-.column-intro {
-  font-family:var(--sans); font-size:13px; font-weight:300;
-  color:var(--text-secondary); line-height:2.3; max-width:560px;
-  margin-bottom:52px; letter-spacing:0.06em;
-}
-
-.column-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(264px, 1fr));
-  gap:1px;
-  background:var(--border);
-  border:1px solid var(--border);
-}
-
-.column-card {
-  background:var(--bg-card);
-  padding:32px 28px;
-  cursor:pointer;
-  transition:background var(--transition);
-  text-decoration:none; display:block;
-  position:relative; overflow:hidden;
-}
-.column-card::before {
-  content:''; position:absolute;
-  top:0; left:0; right:0; height:1px;
-  background:linear-gradient(to right, transparent, var(--gold-dim), transparent);
-  opacity:0; transition:opacity 0.4s;
-}
+/* ── コラム ── */
+#column { padding:100px 0; border-bottom:1px solid var(--border); }
+.column-intro { font-family:var(--sans); font-size:13px; font-weight:300; color:var(--text-secondary); line-height:2.3; max-width:560px; margin-bottom:52px; }
+.column-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(264px, 1fr)); gap:1px; background:var(--border); border:1px solid var(--border); }
+.column-card { background:var(--bg-card); padding:32px 28px; cursor:pointer; transition:background var(--transition); text-decoration:none; display:block; }
 .column-card:hover { background:var(--bg-card-hover); }
-.column-card:hover::before { opacity:1; }
+.column-card-tag { font-family:var(--display); font-size:9px; letter-spacing:0.38em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.column-card-title { font-family:var(--serif); font-size:14px; font-weight:300; line-height:1.9; color:var(--text-primary); margin-bottom:18px; }
+.column-card-date { font-family:var(--sans); font-size:10px; font-weight:300; color:var(--text-muted); }
 
-.column-card-tag {
-  font-family:var(--display); font-size:9px; letter-spacing:0.38em;
-  text-transform:uppercase; color:var(--gold); margin-bottom:14px;
-}
-.column-card-title {
-  font-family:var(--serif); font-size:14px; font-weight:300;
-  line-height:1.9; color:var(--text-primary); margin-bottom:18px;
-}
-.column-card-date {
-  font-family:var(--sans); font-size:10px; font-weight:300;
-  color:var(--text-muted); letter-spacing:0.1em;
-}
-
-/* MODAL */
-.modal-overlay {
-  display:none; position:fixed; inset:0;
-  background:rgba(6,10,16,0.9); z-index:200;
-  backdrop-filter:blur(8px);
-  align-items:center; justify-content:center; padding:24px;
-}
+/* ── モーダル ── */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(6,10,16,0.9); z-index:300; backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:24px; }
 .modal-overlay.open { display:flex; }
-.modal-box {
-  background:#131c27;
-  border:1px solid rgba(140,180,220,0.18);
-  max-width:640px; width:100%;
-  max-height:82vh; overflow-y:auto;
-  padding:48px; position:relative;
-  animation:fadeUp 0.28s cubic-bezier(.22,1,.36,1) forwards;
-}
-.modal-close {
-  position:absolute; top:20px; right:22px;
-  background:transparent; border:none;
-  color:var(--text-muted); font-size:20px; cursor:pointer;
-  transition:color var(--transition); line-height:1;
-}
+.modal-box { background:#131c27; border:1px solid rgba(140,180,220,0.18); max-width:640px; width:100%; max-height:82vh; overflow-y:auto; padding:48px; position:relative; animation:fadeUp 0.28s cubic-bezier(.22,1,.36,1) forwards; }
+.modal-close { position:absolute; top:20px; right:22px; background:transparent; border:none; color:var(--text-muted); font-size:20px; cursor:pointer; transition:color var(--transition); line-height:1; }
 .modal-close:hover { color:var(--gold); }
-.modal-tag {
-  font-family:var(--display); font-size:10px; letter-spacing:0.42em;
-  color:var(--gold); text-transform:uppercase; margin-bottom:12px;
-}
-.modal-title {
-  font-family:var(--serif); font-size:clamp(15px, 2.5vw, 21px); font-weight:300;
-  color:var(--text-primary); line-height:1.65;
-  margin-bottom:28px; padding-bottom:22px;
-  border-bottom:1px solid var(--border);
-}
-.modal-body {
-  font-family:var(--serif); font-size:15px; font-weight:300;
-  color:var(--text-primary); line-height:2.3; white-space:pre-line;
-}
+.modal-tag { font-family:var(--display); font-size:10px; letter-spacing:0.42em; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
+.modal-title { font-family:var(--serif); font-size:clamp(15px, 2.5vw, 21px); font-weight:300; color:var(--text-primary); line-height:1.65; margin-bottom:28px; padding-bottom:22px; border-bottom:1px solid var(--border); }
+.modal-body { font-family:var(--serif); font-size:15px; font-weight:300; color:var(--text-primary); line-height:2.3; white-space:pre-line; }
 
-/* ══════════════════════════════
-   SECTION 4 — できること
-══════════════════════════════ */
-#dekiru {
-  padding:100px 0 120px;
-}
-
-.dekiru-lead {
-  font-family:var(--serif);
-  font-size:clamp(18px, 2.8vw, 26px); font-weight:300;
-  line-height:1.9; color:var(--text-primary); letter-spacing:0.05em;
-  max-width:600px; margin-bottom:52px;
-}
+/* ── できること ── */
+#dekiru { padding:100px 0 120px; }
+.dekiru-lead { font-family:var(--serif); font-size:clamp(18px, 2.8vw, 26px); font-weight:300; line-height:1.9; color:var(--text-primary); max-width:600px; margin-bottom:52px; }
 .dekiru-lead .accent { color:var(--gold-light); }
-
-.dekiru-items {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
-  gap:2px; margin-bottom:56px;
-}
-.dekiru-item {
-  background:var(--bg-card); border:1px solid var(--border);
-  padding:30px 26px;
-  transition:border-color var(--transition), background var(--transition);
-}
-.dekiru-item:hover { border-color:var(--border-active); background:var(--bg-card-hover); }
-
-.dekiru-item-num {
-  font-family:var(--display); font-size:30px; font-weight:300;
-  color:rgba(140,180,220,0.09); line-height:1; margin-bottom:12px;
-}
-.dekiru-item-title {
-  font-family:var(--serif); font-size:14px; font-weight:400;
-  color:var(--gold-light); letter-spacing:0.08em; margin-bottom:10px;
-}
-.dekiru-item-body {
-  font-family:var(--sans); font-size:12px; font-weight:300;
-  color:var(--text-secondary); line-height:2.1; letter-spacing:0.04em;
-}
-
-.cta-block {
-  background:var(--bg-card); border:1px solid var(--border);
-  padding:48px; text-align:center;
-}
-.cta-block p {
-  font-family:var(--sans); font-size:13px; font-weight:300;
-  color:var(--text-secondary); line-height:2.3; margin-bottom:32px; letter-spacing:0.06em;
-}
+.dekiru-items { display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:2px; margin-bottom:56px; }
+.dekiru-item { background:var(--bg-card); border:1px solid var(--border); padding:30px 26px; transition:border-color var(--transition); }
+.dekiru-item:hover { border-color:var(--border-active); }
+.dekiru-item-num { font-family:var(--display); font-size:30px; font-weight:300; color:rgba(140,180,220,0.09); line-height:1; margin-bottom:12px; }
+.dekiru-item-title { font-family:var(--serif); font-size:14px; font-weight:400; color:var(--gold-light); letter-spacing:0.08em; margin-bottom:10px; }
+.dekiru-item-body { font-family:var(--sans); font-size:12px; font-weight:300; color:var(--text-secondary); line-height:2.1; }
+.cta-block { background:var(--bg-card); border:1px solid var(--border); padding:48px; text-align:center; }
+.cta-block p { font-family:var(--sans); font-size:13px; font-weight:300; color:var(--text-secondary); line-height:2.3; margin-bottom:32px; }
 .cta-btns { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
 
-/* FOOTER */
-footer { border-top:1px solid var(--border); padding:40px 0 60px; }
-.footer-inner {
-  display:flex; justify-content:space-between; align-items:flex-end;
-  flex-wrap:wrap; gap:20px;
-}
-.footer-note {
-  font-family:var(--sans); font-size:11px; font-weight:300;
-  color:var(--text-muted); letter-spacing:0.08em; line-height:2;
-}
-.footer-brand {
-  font-family:var(--display); font-size:12px; letter-spacing:0.42em;
-  color:rgba(200,164,90,0.2); text-transform:uppercase;
-}
+/* ── フッター（FRAME B）── */
+footer { border-top:1px solid var(--border); padding:40px 0 100px; }
+.footer-inner { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:28px; }
+.footer-note { font-family:var(--sans); font-size:11px; font-weight:300; color:var(--text-muted); line-height:2; }
+.footer-brand { font-family:var(--display); font-size:12px; letter-spacing:0.42em; color:rgba(200,164,90,0.2); text-transform:uppercase; }
+.footer-legal-links { display:flex; flex-wrap:wrap; gap:6px 24px; padding-top:16px; border-top:1px solid var(--border); }
+.footer-legal-links a { font-family:var(--sans); font-size:11px; font-weight:300; color:var(--text-muted); text-decoration:none; letter-spacing:0.06em; transition:color var(--transition); cursor:pointer; }
+.footer-legal-links a:hover { color:var(--gold); }
 
-/* UTILS */
-@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
-.fade-up {
-  opacity:0; transform:translateY(18px);
-  transition:opacity 0.65s ease, transform 0.65s ease;
+/* ── スマホ固定ナビ（§0-2）── */
+.sp-fixed-nav {
+  display:none;
+  position:fixed; bottom:0; left:0; right:0;
+  z-index:150;
+  background:rgba(10,14,20,0.97);
+  border-top:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  padding:10px 16px 16px;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
 }
-.fade-up.visible { opacity:1; transform:translateY(0); }
-
-/* ── RESPONSIVE ── */
+.sp-fixed-nav .sp-btn {
+  display:flex; align-items:center; justify-content:center;
+  padding:11px 8px;
+  font-family:var(--sans); font-size:12px; font-weight:300;
+  letter-spacing:0.1em; text-decoration:none; cursor:pointer;
+  border:none; transition:background var(--transition);
+}
+.sp-btn-diag { background:var(--crimson); color:var(--text-primary); }
+.sp-btn-diag:hover { background:var(--crimson-bright); }
+.sp-btn-contact { background:transparent; color:var(--gold); border:1px solid var(--gold-dim); }
+.sp-btn-contact:hover { background:var(--gold-glow); }
 @media (max-width: 768px) {
+  .sp-fixed-nav { display:grid; }
   nav { padding:0 20px; }
-  .nav-links { gap:18px; }
-  .nav-links li:nth-child(3),
-  .nav-links li:nth-child(4) { display:none; }
+  .nav-links li:nth-child(3), .nav-links li:nth-child(4) { display:none; }
   .wrapper { padding:0 20px; }
   .narrative-grid { grid-template-columns:1fr; }
   .cta-block { padding:32px 22px; }
   .modal-box { padding:32px 24px; }
+  #booking { padding:32px 22px; }
+  .brow { grid-template-columns:1fr; }
 }
+
+/* ── UTILS ── */
+@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+.fade-up { opacity:0; transform:translateY(18px); transition:opacity 0.65s ease, transform 0.65s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
 </style>
 </head>
 <body>
@@ -717,7 +345,7 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
   </ul>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section id="top" style="position:relative;">
   <div class="wrapper">
     <div class="hero-inner">
@@ -725,27 +353,23 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
         <div class="eyebrow-line"></div>
         <span class="eyebrow-text">Nexccess — Management Navigation</span>
       </div>
-
       <h1 class="hero-catch">
         社長が「なんか変だな」と思ったとき、<br>
         <span class="accent">最初に来る場所。</span>
       </h1>
       <p class="hero-sub">経営の「なぜ」を整理する</p>
-
       <p class="hero-body">
         解決策は、まだいらない。<br>
         「何が起きているのか」が見えていないまま動くと、<br>
         たいてい、同じところに戻ってくる。<br>
         まず、整理する。
       </p>
-
       <div class="hero-targets">
         <span class="target-tag">従業員50名以下</span>
         <span class="target-tag">年商2億未満</span>
         <span class="target-tag">創業オーナー社長</span>
         <span class="target-tag">経理担当の奥さま</span>
       </div>
-
       <div class="hero-btns">
         <a href="#shindan" class="btn-primary">いまの状態を整理してみる</a>
         <a href="#column" class="btn-ghost">コラムを読む</a>
@@ -758,47 +382,41 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
   </div>
 </section>
 
-<!-- ══ NARRATIVE — 経営の痛みに共感させるセクション ══ -->
+<!-- NARRATIVE -->
 <section id="narrative">
   <div class="wrapper">
     <div class="narrative-grid fade-up">
-
       <div class="narrative-card">
         <div class="narrative-label">人材・採用</div>
         <p class="narrative-question">「育てているつもりが、育てられていた。」</p>
         <p class="narrative-answer">時間も金もかけた。それでも、育たない。<br>原因を探して止まる。だが本当は——従業員は経営者の言葉だけでなく、判断と迷いを、毎日読んでいる。</p>
       </div>
-
       <div class="narrative-card">
         <div class="narrative-label">資金繰り・財務</div>
         <p class="narrative-question">「社長の視野は、お金の順番で広がる。」</p>
         <p class="narrative-answer">最初は手元の金だけ。ある日気づく——「黒字なのに、金がない。」<br>資金繰りから損益へ、そして全体像へ。その順番に近道はない。</p>
       </div>
-
       <div class="narrative-card">
         <div class="narrative-label">価格・利益構造</div>
         <p class="narrative-question">「安易な値切りが、会社の寿命を縮める。」</p>
         <p class="narrative-answer">値切るとは何をしている行為か。「あなたの差し出すものはその値段に届かない」と告げている。<br>自分の商品に高い値段をつけるには、まず高く仕入れることを覚悟する。</p>
       </div>
-
       <div class="narrative-card">
         <div class="narrative-label">組織・構造</div>
         <p class="narrative-question">「問題が消えない会社には、構造がある。」</p>
         <p class="narrative-answer">同じトラブルが繰り返されるとき、それは偶然ではない。<br>誰かを変えても、仕組みが変わらなければ、同じ問題が別の顔で戻ってくる。</p>
       </div>
-
       <div class="narrative-divider">
         <p class="narrative-divider-text">
           「なんとなく変だな」という感覚は、<br>
           たいてい<em>正しい</em>。整理できていないだけだ。
         </p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 2: 診断ツール ══ -->
+<!-- SECTION 02: 診断 -->
 <section id="shindan">
   <div class="wrapper">
     <div class="section-head fade-up">
@@ -808,7 +426,6 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
         <span class="sec-sub">Management Structure — First Analysis</span>
       </div>
     </div>
-
     <p class="shindan-intro fade-up">
       5つの質問に答えるだけ。<br>
       生成AIが経営状態の「構造」を一次整理します。<br>
@@ -823,15 +440,15 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
           <div class="field-check" id="check-industry"></div>
         </div>
         <div class="options">
-          <button class="opt" data-value="manufacturing">製造業</button>
-          <button class="opt" data-value="construction">建設・土木</button>
-          <button class="opt" data-value="wholesale_retail">卸売・小売</button>
-          <button class="opt" data-value="food_hospitality">飲食・宿泊</button>
-          <button class="opt" data-value="care_medical">介護・医療</button>
-          <button class="opt" data-value="logistics">物流・運輸</button>
-          <button class="opt" data-value="it_info">IT・情報</button>
-          <button class="opt" data-value="professional_services">専門サービス</button>
-          <button class="opt" data-value="other">その他</button>
+          <button class="opt" data-value="製造業">製造業</button>
+          <button class="opt" data-value="建設・土木">建設・土木</button>
+          <button class="opt" data-value="卸売・小売">卸売・小売</button>
+          <button class="opt" data-value="飲食・宿泊">飲食・宿泊</button>
+          <button class="opt" data-value="介護・医療">介護・医療</button>
+          <button class="opt" data-value="物流・運輸">物流・運輸</button>
+          <button class="opt" data-value="IT・情報">IT・情報</button>
+          <button class="opt" data-value="専門サービス">専門サービス</button>
+          <button class="opt" data-value="その他">その他</button>
         </div>
       </div>
 
@@ -842,10 +459,10 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
           <div class="field-check" id="check-size"></div>
         </div>
         <div class="options">
-          <button class="opt" data-value="1-30">〜30名</button>
-          <button class="opt" data-value="31-100">31〜100名</button>
-          <button class="opt" data-value="101-300">101〜300名</button>
-          <button class="opt" data-value="301+">301名以上</button>
+          <button class="opt" data-value="〜30名">〜30名</button>
+          <button class="opt" data-value="31〜100名">31〜100名</button>
+          <button class="opt" data-value="101〜300名">101〜300名</button>
+          <button class="opt" data-value="301名以上">301名以上</button>
         </div>
       </div>
 
@@ -856,9 +473,9 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
           <div class="field-check" id="check-sales"></div>
         </div>
         <div class="options">
-          <button class="opt" data-value="growing">伸びている</button>
-          <button class="opt" data-value="flat">横ばい</button>
-          <button class="opt" data-value="declining">下がっている</button>
+          <button class="opt" data-value="伸びている">伸びている</button>
+          <button class="opt" data-value="横ばい">横ばい</button>
+          <button class="opt" data-value="下がっている">下がっている</button>
         </div>
       </div>
 
@@ -869,9 +486,9 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
           <div class="field-check" id="check-hr"></div>
         </div>
         <div class="options">
-          <button class="opt" data-value="stable">順調</button>
-          <button class="opt" data-value="struggling">苦戦している</button>
-          <button class="opt" data-value="paused">停止・未実施</button>
+          <button class="opt" data-value="順調">順調</button>
+          <button class="opt" data-value="苦戦している">苦戦している</button>
+          <button class="opt" data-value="停止・未実施">停止・未実施</button>
         </div>
       </div>
 
@@ -882,9 +499,9 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
           <div class="field-check" id="check-dx"></div>
         </div>
         <div class="options">
-          <button class="opt" data-value="partial">部分的に導入</button>
-          <button class="opt" data-value="siloed">ツールはあるが属人化</button>
-          <button class="opt" data-value="none">未着手</button>
+          <button class="opt" data-value="部分的に導入">部分的に導入</button>
+          <button class="opt" data-value="ツールはあるが属人化">ツールはあるが属人化</button>
+          <button class="opt" data-value="未着手">未着手</button>
         </div>
       </div>
 
@@ -895,7 +512,7 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
         </button>
         <p class="submit-note">解決策・提案・営業は一切行いません</p>
       </div>
-      <div id="error"></div>
+      <div id="diag-error"></div>
     </div>
 
     <div id="loading">
@@ -903,6 +520,7 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
       <p class="loading-label">Analyzing Structure</p>
     </div>
 
+    <!-- 診断結果 -->
     <div id="result">
       <div class="result-eyebrow">
         <div class="result-eyebrow-line"></div>
@@ -923,21 +541,73 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
         <div class="result-block-label">整理しておくと、見え方が変わること</div>
         <p class="result-text" id="text-3"></p>
       </div>
-      <div class="result-cta" id="result-cta">
-        <p>
-          まず話を聞いてもらいたい、という段階で構いません。<br>
-          「何から相談すればいいかわからない」という方こそ、お気軽にどうぞ。
-        </p>
-        <div class="cta-btns">
-          <a href="https://nexccess.com/#contact" class="btn-primary" target="_blank">相談してみる</a>
-          <a href="https://nexccess.com" class="btn-ghost" target="_blank">Nexcessについて</a>
+
+      <!-- 予約フォーム（§8-1 Step6・§3-2 11列準拠） -->
+      <div id="booking">
+        <div class="booking-head">
+          <p class="booking-title">AI診断・自動予約 導入相談（30分）を予約する</p>
+          <p class="booking-sub">ご連絡先と希望日時をご入力ください。Googleカレンダーに予約を登録します。</p>
+        </div>
+        <div id="booking-form-inner">
+          <div class="bfield">
+            <label>お名前 <span class="req">*</span></label>
+            <input type="text" id="b-name" placeholder="山田 太郎" autocomplete="name">
+          </div>
+          <div class="bfield">
+            <label>携帯電話番号 <span class="req">*</span></label>
+            <input type="tel" id="b-phone" placeholder="090-0000-0000" autocomplete="tel">
+          </div>
+          <div class="bfield">
+            <label>メールアドレス <span class="req">*</span></label>
+            <input type="email" id="b-email" placeholder="your@email.com" autocomplete="email">
+          </div>
+          <div class="bfield">
+            <label>会社名 / 事業所名</label>
+            <input type="text" id="b-company" placeholder="株式会社〇〇" autocomplete="organization">
+          </div>
+          <div class="brow">
+            <div class="bfield">
+              <label>ご希望日（第1希望） <span class="req">*</span></label>
+              <input type="date" id="b-date1">
+            </div>
+            <div class="bfield">
+              <label>ご希望時間帯 <span class="req">*</span></label>
+              <select id="b-time1">
+                <option value="">時間を選択</option>
+                <option value="09:00">09:00〜10:00</option>
+                <option value="10:00">10:00〜11:00</option>
+                <option value="11:00">11:00〜12:00</option>
+                <option value="13:00">13:00〜14:00</option>
+                <option value="14:00">14:00〜15:00</option>
+                <option value="15:00">15:00〜16:00</option>
+                <option value="16:00">16:00〜17:00</option>
+                <option value="17:00">17:00〜18:00</option>
+              </select>
+            </div>
+          </div>
+          <div class="bfield">
+            <label>ご希望日（第2希望）</label>
+            <input type="date" id="b-date2">
+          </div>
+          <button class="btn-booking" id="btn-booking" disabled>
+            <div class="spinner"></div>
+            <span class="btn-text">予約を確定する →</span>
+          </button>
+          <div id="booking-error"></div>
+        </div>
+        <div id="booking-done">
+          <p class="booking-done-title">ご予約ありがとうございます</p>
+          <p class="booking-done-body">
+            担当者より確認のご連絡を差し上げます。<br>
+            Googleカレンダーにも仮予約を登録いたしました。
+          </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 3: コラム ══ -->
+<!-- SECTION 03: コラム -->
 <section id="column">
   <div class="wrapper">
     <div class="section-head fade-up">
@@ -947,18 +617,16 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
         <span class="sec-sub">人財・資金繰り・銀行との付き合い方</span>
       </div>
     </div>
-
     <p class="column-intro fade-up">
       「なんとなく不安」を言葉にする。<br>
       採用・育成・手元資金・銀行との板挟み——<br>
       オーナー社長が一人で抱えやすいテーマを、整理する視点で書いています。
     </p>
-
     <div class="column-grid" id="column-grid"></div>
   </div>
 </section>
 
-<!-- ══ SECTION 4: できること ══ -->
+<!-- SECTION 04: できること -->
 <section id="dekiru">
   <div class="wrapper">
     <div class="section-head fade-up">
@@ -968,12 +636,10 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
         <span class="sec-sub">What We Can Do</span>
       </div>
     </div>
-
     <p class="dekiru-lead fade-up">
       「評論家ではなく、<span class="accent">事業を動かす実務家</span>として。」<br>
       現場に入り込み、短期・中長期の課題に向き合います。
     </p>
-
     <div class="dekiru-items fade-up">
       <div class="dekiru-item">
         <div class="dekiru-item-num">01</div>
@@ -996,68 +662,139 @@ footer { border-top:1px solid var(--border); padding:40px 0 60px; }
         <p class="dekiru-item-body">都心から地方まで、実績に基づく投資判断と管理支援を提供します。</p>
       </div>
     </div>
-
     <div class="cta-block fade-up">
       <p>
         まず話を聞いてもらいたい、という段階で構いません。<br>
         「何から相談すればいいかわからない」という方こそ、お気軽にどうぞ。
       </p>
       <div class="cta-btns">
-        <a href="https://nexccess.com/#contact" class="btn-primary" target="_blank">お問い合わせ</a>
+        <a href="#shindan" class="btn-primary">いまの状態を整理してみる</a>
         <a href="https://nexccess.com" class="btn-ghost" target="_blank">コーポレートサイトへ</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay">
+<!-- FOOTER（FRAME B 準拠） -->
+<footer>
+  <div class="wrapper">
+    <div class="footer-inner">
+      <p class="footer-note">
+        本ツールは経営状態の一次整理を目的とするものです。診断・評価・推奨は行いません。<br>
+        © 2025 合同会社Nexccess. All Rights Reserved.
+      </p>
+      <div class="footer-brand">Path-Flow Management Base</div>
+    </div>
+    <div class="footer-legal-links">
+      <a onclick="openLegalModal('modal-privacy')">プライバシーポリシー</a>
+      <a onclick="openLegalModal('modal-disclaimer')">免責事項</a>
+      <a onclick="openLegalModal('modal-antisocial')">反社会的勢力への対応</a>
+      <a onclick="openLegalModal('modal-conflict')">利益相反管理方針</a>
+      <a onclick="openLegalModal('modal-compliance')">コンプライアンス方針</a>
+    </div>
+  </div>
+</footer>
+
+<!-- スマホ固定ナビ（§0-2） -->
+<div class="sp-fixed-nav">
+  <a href="#shindan" class="sp-btn sp-btn-diag">AI診断をする</a>
+  <a href="https://nexccess.com/#contact" class="sp-btn sp-btn-contact" target="_blank">相談する</a>
+</div>
+
+<!-- コラムモーダル -->
+<div class="modal-overlay" id="modal-column">
   <div class="modal-box">
-    <button class="modal-close" id="modal-close">✕</button>
+    <button class="modal-close" onclick="closeColumnModal()">✕</button>
     <div class="modal-tag" id="modal-tag"></div>
     <div class="modal-title" id="modal-title"></div>
     <div class="modal-body" id="modal-body"></div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrapper">
-    <div class="footer-inner">
-      <p class="footer-note">
-        本ツールは経営状態の一次整理を目的とするものです。診断・評価・推奨は行いません。<br>
-        © 2025 合同会社Nexccess. All rights reserved.
-      </p>
-      <div class="footer-brand">Nexccess — Next Success</div>
-    </div>
+<!-- リーガルモーダル群（FRAME C 準拠） -->
+<div id="modal-privacy" class="modal-overlay" onclick="closeLegalOutside(event,'modal-privacy')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLegalModal('modal-privacy')">✕</button>
+    <div class="modal-tag">Privacy Policy</div>
+    <div class="modal-title">個人情報保護方針（プライバシーポリシー）</div>
+    <div class="modal-body">合同会社Nexccess（以下「当社」）は、お客様の個人情報の保護を重要な責務と認識し、個人情報保護法その他関連法令を遵守し、適切に取り扱います。収集した個人情報は、サービス提供・連絡・改善の目的にのみ使用し、第三者への無断提供は行いません。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
   </div>
-</footer>
+</div>
+<div id="modal-disclaimer" class="modal-overlay" onclick="closeLegalOutside(event,'modal-disclaimer')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLegalModal('modal-disclaimer')">✕</button>
+    <div class="modal-tag">Disclaimer</div>
+    <div class="modal-title">免責事項</div>
+    <div class="modal-body">本サイトおよびAI診断ツールの情報は一次整理を目的とするものであり、法的・財務的判断の根拠となるものではありません。当社は本サービスの利用により生じた損害について、いかなる責任も負いかねます。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
+  </div>
+</div>
+<div id="modal-antisocial" class="modal-overlay" onclick="closeLegalOutside(event,'modal-antisocial')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLegalModal('modal-antisocial')">✕</button>
+    <div class="modal-tag">Anti-Social Forces</div>
+    <div class="modal-title">反社会的勢力への対応</div>
+    <div class="modal-body">当社は、反社会的勢力に対して毅然とした態度で臨み、一切の関係を遮断します。反社会的勢力からの不当要求に対しては、組織全体で対応し、必要に応じて警察・弁護士等の外部機関と連携します。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
+  </div>
+</div>
+<div id="modal-conflict" class="modal-overlay" onclick="closeLegalOutside(event,'modal-conflict')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLegalModal('modal-conflict')">✕</button>
+    <div class="modal-tag">Conflict of Interest</div>
+    <div class="modal-title">利益相反管理方針</div>
+    <div class="modal-body">当社は、お客様の利益を最優先に考え、利益相反が生じる可能性のある案件については適切に開示・管理します。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
+  </div>
+</div>
+<div id="modal-compliance" class="modal-overlay" onclick="closeLegalOutside(event,'modal-compliance')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLegalModal('modal-compliance')">✕</button>
+    <div class="modal-tag">Compliance</div>
+    <div class="modal-title">コンプライアンス・その他方針</div>
+    <div class="modal-body">当社は、法令・社内規程・社会規範を遵守し、公正かつ誠実な企業活動を行います。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
+  </div>
+</div>
 
 <script>
-/* ─────────────────────────────────────
-   Amplitude 初期化
-───────────────────────────────────── */
-amplitude.init('8d3b5be866c4740fa6c83949f85ce25e', { defaultTracking: false });
-amplitude.track('page_view', { lp_id: 'keiei-v1', path: location.pathname });
+/* ═══════════════════════════════════════
+   定数（§2-3 LP_ID・APIキー直接埋込み）
+═══════════════════════════════════════ */
+const LP_ID            = 'keiei-v1';
+const AMPLITUDE_API_KEY = '8d3b5be866c4740fa6c83949f85ce25e';
 
-/* ─────────────────────────────────────
-   NAV SCROLL
-───────────────────────────────────── */
+/* ═══════════════════════════════════════
+   Amplitude 初期化（§2-2 try-catch保護）
+═══════════════════════════════════════ */
+try {
+  if (typeof window.amplitude !== 'undefined') {
+    window.amplitude.init(AMPLITUDE_API_KEY, { defaultTracking: false });
+  }
+} catch(e) {}
+
+function ampTrack(event, props) {
+  try {
+    if (typeof window.amplitude !== 'undefined') {
+      window.amplitude.track(event, props);
+    }
+  } catch(e) {}
+}
+
+/* page_view（§2-4 必須プロパティ: lp）*/
+ampTrack('page_view', { lp: LP_ID });
+
+/* ─── NAV SCROLL ─── */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
 });
 
-/* ─────────────────────────────────────
-   SCROLL FADE-IN
-───────────────────────────────────── */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
+/* ─── SCROLL FADE-IN ─── */
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.1 }
+);
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-/* ─────────────────────────────────────
-   COLUMN DATA
-───────────────────────────────────── */
+/* ═══════════════════════════════════════
+   コラムデータ
+═══════════════════════════════════════ */
 const COLUMNS = [
   {
     tag: '人材育成',
@@ -1085,9 +822,7 @@ const COLUMNS = [
 だが実際には、見られていた。
 
 従業員が育たないとき、経営者は何かを教わっている。
-それが何かは、自分で整理するしかない。
-
-答えは、外にはない。`
+それが何かは、自分で整理するしかない。`
   },
   {
     tag: '資金繰り',
@@ -1100,7 +835,6 @@ const COLUMNS = [
 来月、入ってくるのか。
 
 それだけを見て、会社を動かしている経営者は少なくない。
-それで回っているうちは、問題ない。
 
 だが、ある日気づく。
 「黒字なのに、金がない。」
@@ -1109,15 +843,10 @@ const COLUMNS = [
 売上と利益。経費の構造。どこで稼いで、どこで消えているか。
 
 さらに時間が経つと、もう一段、視野が広がる。
-自社の資産と負債。銀行からどう見られているか。会社の「体力」はどこにあるのか。
+自社の資産と負債。銀行からどう見られているか。
 
 この順番は、誰でも同じだ。
-資金繰りから始まって、損益が見えて、全体像が見えてくる。
-
-逆順には、なかなかならない。
-
-資金繰りができる経営者が強いのは、数字に強いからではない。
-「次に何が見えてくるか」を、知っているからだ。`
+資金繰りから始まって、損益が見えて、全体像が見えてくる。`
   },
   {
     tag: '価格戦略',
@@ -1127,31 +856,20 @@ const COLUMNS = [
 
 「少しでも安く仕入れたい。」
 「営業努力だ。」
-「それがビジネスだ。」
-
-そう言う人間は多い。
 
 だが、少し立ち止まって考えてみる。
 
 値切るとは、何をしている行為か。
 
 相手が提示した金額に対して、「その価値はない」と告げている。
-それだけのことだ。
 
 商品でも、サービスでも、人の時間でも。
 「あなたが差し出すものは、その値段には届かない」と、言っている。
 
 それを平然とやる人間が、自分の商品やサービスに高い値段をつけようとする。
-不思議な話だ。
 
 高く仕入れて、付加価値をつけて、高く売る。
-その工夫と知恵こそが、商売の本質だと思っている。
-
-安く買い叩くことは、誰でもできる。
-高く売ることは、実力がいる。
-
-値切る前に、一度だけ考えてみる。
-自分は今、何を告知しようとしているか。`
+その工夫と知恵こそが、商売の本質だと思っている。`
   }
 ];
 
@@ -1159,40 +877,50 @@ const grid = document.getElementById('column-grid');
 COLUMNS.forEach((col, i) => {
   const card = document.createElement('div');
   card.className = 'column-card';
-  card.innerHTML = `
-    <div class="column-card-tag">${col.tag}</div>
-    <div class="column-card-title">${col.title}</div>
-    <div class="column-card-date">${col.date}</div>`;
-  card.addEventListener('click', () => openModal(i));
+  card.innerHTML = `<div class="column-card-tag">${col.tag}</div><div class="column-card-title">${col.title}</div><div class="column-card-date">${col.date}</div>`;
+  card.addEventListener('click', () => {
+    document.getElementById('modal-tag').textContent   = col.tag;
+    document.getElementById('modal-title').textContent = col.title;
+    document.getElementById('modal-body').textContent  = col.body;
+    document.getElementById('modal-column').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
   grid.appendChild(card);
 });
-
-/* ─────────────────────────────────────
-   MODAL
-───────────────────────────────────── */
-function openModal(i) {
-  const col = COLUMNS[i];
-  document.getElementById('modal-tag').textContent   = col.tag;
-  document.getElementById('modal-title').textContent = col.title;
-  document.getElementById('modal-body').textContent  = col.body;
-  document.getElementById('modal-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
+function closeColumnModal() {
+  document.getElementById('modal-column').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.getElementById('modal-close').addEventListener('click', closeModal);
-document.getElementById('modal-overlay').addEventListener('click', (e) => {
-  if (e.target === e.currentTarget) closeModal();
+document.getElementById('modal-column').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeColumnModal();
 });
 
-/* ─────────────────────────────────────
-   DIAGNOSTIC FORM
-   フィールドキー：仕様書準拠 industry/size/sales/hr/dx
-───────────────────────────────────── */
+/* ─── リーガルモーダル（FRAME C）─── */
+function openLegalModal(id) {
+  var el = document.getElementById(id);
+  if (el) { el.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeLegalModal(id) {
+  var el = document.getElementById(id);
+  if (el) { el.classList.remove('open'); document.body.style.overflow = ''; }
+}
+function closeLegalOutside(e, id) {
+  if (e.target === document.getElementById(id)) closeLegalModal(id);
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+/* ═══════════════════════════════════════
+   診断フォーム
+═══════════════════════════════════════ */
 const selected = {};
-const FIELDS = ['industry', 'size', 'sales', 'hr', 'dx'];
+const FIELDS   = ['industry','size','sales','hr','dx'];
 
 document.querySelectorAll('.field').forEach(field => {
   const key = field.dataset.field;
@@ -1205,57 +933,61 @@ document.querySelectorAll('.field').forEach(field => {
       field.classList.add('active');
       const check = document.getElementById('check-' + key);
       if (check) check.classList.add('done');
-      checkReady();
+      checkDiagReady();
     });
   });
 });
 
-function checkReady() {
+function checkDiagReady() {
   document.getElementById('btn-submit').disabled = !FIELDS.every(f => selected[f]);
 }
 
-/* スコアリング（内部ロジック）*/
+/* スコア・レベル計算（§2-4 booking_complete に score/level 必須）*/
 function calcScore(d) {
   let s = 0;
-  if (['flat','declining'].includes(d.sales))      s += 20;
-  if (['struggling','paused'].includes(d.hr))      s += 20;
-  if (['101-300','301+'].includes(d.size))          s += 15;
-  if (['siloed','none'].includes(d.dx))             s += 25;
-  if (['care_medical','logistics','food_hospitality','construction','manufacturing'].includes(d.industry)) s += 20;
+  if (['横ばい','下がっている'].includes(d.sales))           s += 20;
+  if (['苦戦している','停止・未実施'].includes(d.hr))        s += 20;
+  if (['101〜300名','301名以上'].includes(d.size))           s += 15;
+  if (['ツールはあるが属人化','未着手'].includes(d.dx))      s += 25;
+  if (['介護・医療','物流・運輸','飲食・宿泊','建設・土木','製造業'].includes(d.industry)) s += 20;
   return s;
 }
 function getLevel(score) {
-  if (score <= 39) return '論点未自覚層';
-  if (score <= 69) return '構造化予備層';
-  return '構造顕在層';
+  if (score <= 39) return 'A';
+  if (score <= 69) return 'B';
+  return 'C';
 }
 
-/* 送信 */
-document.getElementById('btn-submit').addEventListener('click', async () => {
-  const level = getLevel(calcScore(selected));
-  const btn   = document.getElementById('btn-submit');
+/* answersStr（§2-3 / 区切り文字列）*/
+function buildAnswersStr(d) {
+  return [d.industry, d.size, d.sales, d.hr, d.dx].join(' / ');
+}
 
-  // Amplitude: diagnosis_click
-  amplitude.track('diagnosis_click', { lp_id: 'keiei-v1', structure_level: level, ...selected });
+document.getElementById('btn-submit').addEventListener('click', async () => {
+  const score  = calcScore(selected);
+  const level  = getLevel(score);
+  const btn    = document.getElementById('btn-submit');
+
+  /* diagnosis_click（§2-4 必須プロパティ: lp）*/
+  ampTrack('diagnosis_click', { lp: LP_ID });
 
   btn.disabled = true;
   btn.classList.add('loading');
   document.getElementById('form-section').style.display = 'none';
   document.getElementById('loading').style.display      = 'block';
-  document.getElementById('error').style.display        = 'none';
+  document.getElementById('diag-error').style.display   = 'none';
   document.getElementById('result').style.display       = 'none';
 
   try {
     const res = await fetch('/api/generate', {
-      method: 'POST',
+      method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+      body:    JSON.stringify({
         industry: selected.industry,
         size:     selected.size,
         sales:    selected.sales,
         hr:       selected.hr,
         dx:       selected.dx,
-        structure_level: level
       })
     });
     const data = await res.json();
@@ -1263,6 +995,7 @@ document.getElementById('btn-submit').addEventListener('click', async () => {
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('result').style.display  = 'block';
+    document.getElementById('booking').style.display = 'block';
 
     const text = data.result || '';
     const s1 = text.match(/【1[^】]*】([\s\S]*?)(?=【2|$)/);
@@ -1276,21 +1009,97 @@ document.getElementById('btn-submit').addEventListener('click', async () => {
       setTimeout(() => document.getElementById(id).classList.add('visible'), i * 240);
     });
     setTimeout(() => {
-      document.getElementById('result-cta').classList.add('visible');
-    }, 1000);
-    setTimeout(() => {
       document.getElementById('result').scrollIntoView({ behavior:'smooth', block:'start' });
     }, 120);
 
-    // Amplitude: booking_complete proxy（結果表示完了）
-    amplitude.track('booking_complete', { lp_id: 'keiei-v1', structure_level: level });
+    /* スコア・レベルを予約フォームに引き継ぐ */
+    window._diagScore      = data.score  != null ? data.score  : score;
+    window._diagLevel      = data.level  || level;
+    window._diagAnswersStr = buildAnswersStr(selected);
+    checkBookingReady();
 
   } catch (err) {
     document.getElementById('loading').style.display      = 'none';
-    const errEl = document.getElementById('error');
+    const errEl = document.getElementById('diag-error');
     errEl.textContent = err.message;
     errEl.style.display = 'block';
     document.getElementById('form-section').style.display = 'block';
+    btn.disabled = false;
+    btn.classList.remove('loading');
+  }
+});
+
+/* ═══════════════════════════════════════
+   予約フォーム
+═══════════════════════════════════════ */
+const BOOKING_REQ = ['b-name','b-phone','b-email','b-date1','b-time1'];
+
+function checkBookingReady() {
+  const ok = BOOKING_REQ.every(id => {
+    const el = document.getElementById(id);
+    return el && el.value.trim() !== '';
+  });
+  document.getElementById('btn-booking').disabled = !ok;
+}
+BOOKING_REQ.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', checkBookingReady);
+  if (el) el.addEventListener('change', checkBookingReady);
+});
+
+document.getElementById('btn-booking').addEventListener('click', async () => {
+  const name    = document.getElementById('b-name').value.trim();
+  const phone   = document.getElementById('b-phone').value.trim();
+  const email   = document.getElementById('b-email').value.trim();
+  const company = document.getElementById('b-company').value.trim();
+  const date1   = document.getElementById('b-date1').value;   /* yyyy-mm-dd (type=date) */
+  const time1   = document.getElementById('b-time1').value;
+  const date2   = document.getElementById('b-date2').value;
+  const btn     = document.getElementById('btn-booking');
+
+  /* date: yyyy-mm-dd HH:MM 形式（§5-1 スラッシュ禁止）*/
+  const dateStr  = date1 && time1 ? `${date1} ${time1}` : date1;
+  const date2Str = date2 || '';
+
+  btn.disabled = true;
+  btn.classList.add('loading');
+  document.getElementById('booking-error').style.display = 'none';
+
+  try {
+    const res = await fetch('/api/save-shigyou', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({
+        lp:               LP_ID,
+        name,
+        phone,
+        email,
+        company,
+        date:             dateStr,
+        date2:            date2Str,
+        recommended_menu: '（経営相談）',
+        score:            window._diagScore  || '',
+        level:            window._diagLevel  || '',
+        answersStr:       window._diagAnswersStr || '', /* §5-1 文字列型 */
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || '送信エラーが発生しました');
+
+    document.getElementById('booking-form-inner').style.display = 'none';
+    document.getElementById('booking-done').style.display       = 'block';
+
+    /* booking_complete（§2-4 必須プロパティ: lp, score, level）*/
+    ampTrack('booking_complete', {
+      lp:    LP_ID,
+      score: window._diagScore || '',
+      level: window._diagLevel || '',
+    });
+
+  } catch (err) {
+    const errEl = document.getElementById('booking-error');
+    errEl.textContent = err.message;
+    errEl.style.display = 'block';
     btn.disabled = false;
     btn.classList.remove('loading');
   }
