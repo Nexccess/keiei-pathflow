@@ -1,0 +1,23 @@
+{
+  "functions": {
+    "api/diagnose.js": {
+      "maxDuration": 30
+    },
+    "api/save-shigyou.js": {
+      "maxDuration": 30
+    },
+    "api/amplitude-feed.js": {
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ]
+}

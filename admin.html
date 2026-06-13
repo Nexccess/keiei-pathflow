@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Nexccess 管理者ダッシュボード</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{
+  --bg:#f5f0e8;--navy:#0d1a36;--navy2:#192f60;
+  --gold:#c9a84c;--gold2:#e8d08a;
+  --white:#fff;--border:#e0d9cc;
+  --text:#1a1a2e;--muted:#6b7280;
+  --green:#5a9b7a;--red:#c0392b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP','DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{
+  background:var(--navy);padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.header-left{display:flex;align-items:center;gap:14px}
+.header-logo{
+  width:36px;height:36px;background:var(--gold);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:900;color:var(--navy);
+}
+.header-title{color:var(--white);font-size:15px;font-weight:700}
+.header-sub{color:rgba(255,255,255,.5);font-size:11px;margin-top:1px}
+.header-right{display:flex;align-items:center;gap:12px}
+.btn-refresh{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:var(--white);padding:6px 14px;border-radius:6px;
+  font-size:12px;font-weight:700;cursor:pointer;transition:background .2s;
+}
+.btn-refresh:hover{background:rgba(255,255,255,.2)}
+.btn-mock{
+  background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);
+  color:var(--gold2);padding:6px 14px;border-radius:6px;
+  font-size:12px;font-weight:700;cursor:pointer;
+}
+.lp-tabs{
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:0 24px;display:flex;gap:0;overflow-x:auto;
+}
+.lp-tab{
+  padding:12px 20px;font-size:13px;font-weight:600;cursor:pointer;
+  border-bottom:2px solid transparent;color:var(--muted);
+  white-space:nowrap;transition:all .2s;
+}
+.lp-tab.active{color:var(--navy2);border-bottom-color:var(--gold)}
+.lp-tab:hover{color:var(--navy2)}
+.lp-status{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px;margin-bottom:1px;}
+.lp-status.live{background:var(--green)}
+.main{padding:20px 24px;max-width:1200px;margin:0 auto}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:768px){.kpi-grid{grid-template-columns:1fr 1fr}}
+.kpi-card{
+  background:var(--white);border-radius:12px;padding:18px 16px;
+  border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.05);
+}
+.kpi-label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+.kpi-value{font-size:32px;font-weight:900;color:var(--navy);line-height:1;margin-bottom:4px}
+.kpi-sub{font-size:11px;color:var(--muted)}
+.kpi-gold .kpi-value{color:var(--gold)}
+.kpi-green .kpi-value{color:var(--green)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}}
+.card{background:var(--white);border-radius:12px;padding:20px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.card-title{
+  font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:16px;
+}
+.card-title::before{content:'—';opacity:.5}
+.feed-list{display:flex;flex-direction:column;gap:8px}
+.feed-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;background:var(--bg);font-size:13px;}
+.feed-text{flex:1;color:var(--text)}
+.feed-count{font-size:15px;font-weight:900;color:var(--navy);min-width:48px;text-align:right}
+.feed-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;white-space:nowrap;}
+.badge-diag{background:rgba(25,47,96,.1);color:var(--navy2)}
+.badge-book{background:rgba(90,155,122,.1);color:var(--green)}
+.badge-page{background:rgba(201,168,76,.1);color:var(--gold)}
+.feed-hint{text-align:center;font-size:11px;color:var(--muted);margin-top:12px;padding-top:10px;border-top:1px solid var(--border)}
+.feed-hint a{color:var(--gold);text-decoration:none}
+.feed-hint a:hover{text-decoration:underline}
+.ab-table{width:100%;border-collapse:collapse}
+.ab-table th{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
+.ab-table td{padding:10px 12px;font-size:13px;border-bottom:1px solid var(--bg)}
+.ab-table tr:last-child td{border-bottom:none}
+.badge-current{background:rgba(201,168,76,.15);color:var(--gold);font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-left:6px}
+.conv-rate{font-weight:700;color:var(--gold)}
+.bar-chart{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:flex;align-items:center;gap:10px}
+.bar-label{font-size:12px;color:var(--text);min-width:80px;flex-shrink:0}
+.bar-track{flex:1;height:8px;background:var(--bg);border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;background:var(--gold);border-radius:100px;transition:width .6s ease}
+.bar-pct{font-size:12px;font-weight:700;color:var(--gold);min-width:36px;text-align:right}
+canvas{max-height:180px}
+.loading{text-align:center;padding:40px 0;color:var(--muted);font-size:13px}
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.alert{padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:14px;display:none}
+.alert.show{display:block}
+.alert-info{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);color:#7a5a00;display:block;margin-bottom:14px;}
+.alert-err{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.2);color:var(--red)}
+.ss-links{display:flex;flex-direction:column;gap:8px}
+.ss-link{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg);border-radius:8px;text-decoration:none;color:var(--text);font-size:13px;transition:background .2s;}
+.ss-link:hover{background:var(--border)}
+.ss-name{flex:1;font-weight:500}
+.ss-sheet{font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- PASS GATE -->
+<div id="passGate" style="
+  position:fixed;inset:0;background:#0d1a36;
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;flex-direction:column;gap:20px;
+">
+  <div style="color:#c9a84c;font-size:22px;font-weight:900;letter-spacing:.1em">Nexccess 管理者ダッシュボード</div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <input id="passInput" type="password" placeholder="パスワードを入力"
+      style="padding:10px 16px;border-radius:8px;border:1px solid rgba(201,168,76,.4);
+             background:rgba(255,255,255,.08);color:#fff;font-size:14px;width:220px;outline:none;"
+      onkeydown="if(event.key==='Enter')checkPass()"
+    >
+    <button onclick="checkPass()" style="
+      background:#c9a84c;border:none;color:#0d1a36;
+      padding:10px 20px;border-radius:8px;font-weight:900;cursor:pointer;font-size:14px;
+    ">入室</button>
+  </div>
+  <div id="passErr" style="color:#c0392b;font-size:12px;display:none">パスワードが違います</div>
+</div>
+<script>
+(function(){
+  if(sessionStorage.getItem('nx_auth')==='ok'){
+    document.getElementById('passGate').style.display='none';
+  }
+})();
+function checkPass(){
+  const v = document.getElementById('passInput').value;
+  if(v==='nex2026'){
+    sessionStorage.setItem('nx_auth','ok');
+    document.getElementById('passGate').style.display='none';
+  } else {
+    document.getElementById('passErr').style.display='block';
+    document.getElementById('passInput').value='';
+  }
+}
+</script>
+
+<div class="header">
+  <div class="header-left">
+    <div class="header-logo">Nx</div>
+    <div>
+      <div class="header-title">Nexccess 管理者ダッシュボード</div>
+      <div class="header-sub">更新: <span id="lastUpdate">—</span></div>
+    </div>
+  </div>
+  <div class="header-right">
+    <button class="btn-mock" onclick="loadMock()">MOCK DATA</button>
+    <button class="btn-refresh" onclick="resetAndLoad()">↺ 更新</button>
+  </div>
+</div>
+
+<div class="lp-tabs" id="lpTabs"></div>
+
+<div class="main">
+
+
+
+  <div class="alert alert-err" id="alertErr"></div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">ページビュー</div>
+      <div class="kpi-value" id="kpiPV">—</div>
+      <div class="kpi-sub">今月累計</div>
+    </div>
+    <div class="kpi-card kpi-gold">
+      <div class="kpi-label">AI診断タップ</div>
+      <div class="kpi-value" id="kpiDiag">—</div>
+      <div class="kpi-sub">今月累計</div>
+    </div>
+    <div class="kpi-card kpi-green">
+      <div class="kpi-label">診断完了率</div>
+      <div class="kpi-value" id="kpiRate">—</div>
+      <div class="kpi-sub">診断 / PV</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">予約完了</div>
+      <div class="kpi-value" id="kpiBook">—</div>
+      <div class="kpi-sub">booking_complete</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">ACTIVITY FEED — 今月の実績サマリー</div>
+      <div class="feed-list" id="feedList">
+        <div class="loading"><span class="spinner"></span>読み込み中...</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">TREND — 週別 PV</div>
+      <canvas id="trendChart"></canvas>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">TOP EVENTS — AMPLITUDE</div>
+      <div id="topEvents"><div class="loading"><span class="spinner"></span>読み込み中...</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">FCB CLICK MAP — ボタン別タップ率</div>
+      <div class="bar-chart" id="clickMap"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <div class="card-title">A/B TEST — LP別パフォーマンス</div>
+    <table class="ab-table">
+      <thead>
+        <tr><th>LP VARIANT</th><th>PV</th><th>診断タップ</th><th>予約完了</th><th>転換率</th></tr>
+      </thead>
+      <tbody id="abTable">
+        <tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">読み込み中...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <div class="card-title">SPREADSHEETS — データ蓄積先</div>
+    <div class="ss-links">
+      <a href="https://docs.google.com/spreadsheets/d/1IbDCONo1MFJZlnTjeEPicRVF5ULrdSPt2EGpVdsL2XE" target="_blank" class="ss-link">
+        <span>📊</span><span class="ss-name">Path-Flow_AI診断結果</span>
+        <span class="ss-sheet">AI診断結果 | main.pathflow.org</span>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1lN54su98k_rhiB43G10cqUzQsY-34sKesxq4sZInKuM" target="_blank" class="ss-link">
+        <span>📊</span><span class="ss-name">Path-Flow_2号機_士業DX診断</span>
+        <span class="ss-sheet">士業DX診断結果 | shigyo.pathflow.org</span>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1tKFUNvctedMI-kBqpLP49Gwnh1Df05UgGCOOBZg2F74" target="_blank" class="ss-link">
+        <span>📊</span><span class="ss-name">スコアリング結果</span>
+        <span class="ss-sheet">スコアリング結果 | seisakukinyukouko.site</span>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1Yedly5_vjNiGWhBNgjE8IEzcrlWxnb6myX7-utkOpck" target="_blank" class="ss-link">
+        <span>📊</span><span class="ss-name">AI診断結果（製作金融）</span>
+        <span class="ss-sheet">診断結果 | seisakukinyukouko.site</span>
+      </a>
+      <a href="https://docs.google.com/spreadsheets/d/1KLQn2ZLHUTjzzUo_xrNCoGSYJkDRE1roSMIILPelFw4" target="_blank" class="ss-link">
+        <span>📊</span><span class="ss-name">AI診断結果（相続診断）</span>
+        <span class="ss-sheet">AI診断結果 | souzoku.nexccess.com</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════
+   LP 設定
+   新サイト追加: LP_LIST に追記 + api/amplitude-feed.js の LP_IDS にも追記
+═══════════════════════════════════════ */
+const LP_LIST = [
+  { id:'ALL',         label:'ALL（合算）',    url:'',                                     variant:'合算',        status:'live' },
+  { id:'pathflow-v1', label:'Path-Flow Main', url:'https://main.pathflow.org/',           variant:'v1（稼働中）', status:'live' },
+  { id:'shigyou-v1',  label:'Shigyo（士業）', url:'https://shigyo.pathflow.org/',         variant:'v1（稼働中）', status:'live' },
+  { id:'seisaku-v1',  label:'政策金融',        url:'https://www.seisakukinyukouko.site/', variant:'v1（稼働中）', status:'live' },
+  { id:'souzoku-v1',  label:'相続診断',        url:'https://souzoku.nexccess.com/',       variant:'v1（稼働中）', status:'live' },
+];
+
+let currentLP  = 'ALL';
+let trendChart = null;
+let isMock     = false;
+let _cache     = null;
+
+/* ─── タブ構築 ─── */
+function buildTabs() {
+  document.getElementById('lpTabs').innerHTML = LP_LIST.map(lp =>
+    `<div class="lp-tab${lp.id === currentLP ? ' active' : ''}" onclick="switchLP('${lp.id}')">
+      <span class="lp-status ${lp.status}"></span>${lp.label}
+    </div>`
+  ).join('');
+}
+
+function switchLP(id) {
+  currentLP = id;
+  buildTabs();
+  if (_cache) renderFromCache();
+  else loadAll();
+}
+
+/* ─── API fetch ─── */
+async function fetchFeed() {
+  const r = await fetch('/api/amplitude-feed');
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`);
+  return body;
+}
+
+/* ─── データ読込 ─── */
+async function loadAll() {
+  if (isMock) return;
+  document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString('ja-JP');
+  clearErr();
+  try {
+    _cache = await fetchFeed();
+    renderFromCache();
+  } catch (e) {
+    showErr(e.message);
+  }
+}
+
+function renderFromCache() {
+  if (!_cache) return;
+  // タブ選択に応じてLP別データを表示
+  const kpi    = _cache.kpi?.[currentLP]    ?? { pv:0, diag:0, book:0 };
+  const weekly = _cache.weekly?.[currentLP] ?? [0,0,0,0,0];
+  renderAll(kpi, weekly);
+}
+
+/* ─── 描画 ─── */
+function renderAll(kpi, weekly) {
+  const { pv, diag, book } = kpi;
+  const rate = pv > 0 ? Math.round(diag / pv * 100) : 0;
+
+  document.getElementById('kpiPV').textContent   = pv.toLocaleString();
+  document.getElementById('kpiDiag').textContent = diag.toLocaleString();
+  document.getElementById('kpiRate').textContent = rate + '%';
+  document.getElementById('kpiBook').textContent = book.toLocaleString();
+
+  // Activity Feed
+  const ev = [
+    { label:'ページビュー',  val:pv,   badge:'PV',   cls:'badge-page' },
+    { label:'AI診断タップ',  val:diag, badge:'DIAG', cls:'badge-diag' },
+    { label:'予約完了',      val:book, badge:'BOOK', cls:'badge-book' },
+  ];
+  document.getElementById('feedList').innerHTML =
+    ev.map(r =>
+      `<div class="feed-item">
+        <span class="feed-badge ${r.cls}">${r.badge}</span>
+        <span class="feed-text">${r.label}</span>
+        <span class="feed-count">${r.val.toLocaleString()}</span>
+      </div>`
+    ).join('') +
+    `<div class="feed-hint">リアルタイムは
+      <a href="https://app.amplitude.com/analytics/bitter-shadow-661657" target="_blank">Amplitude</a>
+      でご確認ください</div>`;
+
+  // Trend
+  renderTrend(weekly);
+
+  // Top Events
+  const evMap = [['page_view',pv],['diagnosis_click',diag],['booking_complete',book]]
+    .filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
+  document.getElementById('topEvents').innerHTML = evMap.length === 0
+    ? '<div class="loading">データなし（今月の集計がまだありません）</div>'
+    : `<table class="ab-table"><thead><tr><th>イベント名</th><th>回数</th></tr></thead><tbody>
+        ${evMap.map(([k,v])=>`<tr><td>${k}</td><td><strong>${v.toLocaleString()}</strong></td></tr>`).join('')}
+      </tbody></table>`;
+
+  // FCB Click Map
+  const clicks = { 'AI診断':diag, '予約完了':book };
+  const maxC   = Math.max(...Object.values(clicks), 1);
+  document.getElementById('clickMap').innerHTML =
+    Object.entries(clicks).map(([k,v]) =>
+      `<div class="bar-row">
+        <span class="bar-label">${k}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${Math.round(v/maxC*100)}%"></div></div>
+        <span class="bar-pct">${pv>0?Math.round(v/pv*100):0}%</span>
+      </div>`
+    ).join('');
+
+  // A/B Table — LP別内訳（lp プロパティ実装済み）
+  document.getElementById('abTable').innerHTML = LP_LIST.filter(lp=>lp.id!=='ALL').map(lp => {
+    const k    = _cache?.kpi?.[lp.id] ?? { pv:0, diag:0, book:0 };
+    const rate = k.pv > 0 ? (k.book/k.pv*100).toFixed(1) : '0.0';
+    return `<tr>
+      <td>
+        ${lp.url?`<a href="${lp.url}" target="_blank" style="color:var(--navy2);text-decoration:none">${lp.label}</a>`:lp.label}
+        <span class="badge-current">${lp.variant}</span>
+      </td>
+      <td>${k.pv.toLocaleString()}</td>
+      <td>${k.diag.toLocaleString()}</td>
+      <td>${k.book.toLocaleString()}</td>
+      <td class="conv-rate">${rate}%</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ─── Trend Chart ─── */
+function renderTrend(weekly) {
+  const ctx = document.getElementById('trendChart').getContext('2d');
+  if (trendChart) trendChart.destroy();
+  trendChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['4週前','3週前','2週前','先週','今週'],
+      datasets:[{
+        data: weekly,
+        backgroundColor:'rgba(201,168,76,.6)',
+        borderColor:'rgba(201,168,76,1)',
+        borderWidth:1,borderRadius:4,
+      }],
+    },
+    options:{
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{beginAtZero:true,ticks:{font:{size:10}}},
+        x:{ticks:{font:{size:10}}},
+      },
+    },
+  });
+}
+
+/* ─── エラー ─── */
+function showErr(msg) {
+  const el = document.getElementById('alertErr');
+  el.innerHTML = `⚠ ${msg}`;
+  el.classList.add('show');
+}
+function clearErr() {
+  document.getElementById('alertErr').classList.remove('show');
+}
+
+/* ─── リセット ─── */
+function resetAndLoad() {
+  isMock = false;
+  _cache = null;
+  loadAll();
+}
+
+/* ─── Mock ─── */
+function loadMock() {
+  isMock = true;
+  document.getElementById('lastUpdate').textContent =
+    new Date().toLocaleTimeString('ja-JP') + ' (MOCK)';
+  clearErr();
+  const pv   = Math.floor(Math.random() * 800 + 200);
+  const diag = Math.floor(pv * (Math.random() * 0.3 + 0.1));
+  const book = Math.floor(diag * (Math.random() * 0.2 + 0.05));
+  const kpi  = { pv, diag, book };
+  const weekly = Array.from({length:5}, () => Math.floor(Math.random()*150+20));
+  _cache = {
+    kpi:    { ALL:kpi, 'pathflow-v1':kpi, 'shigyou-v1':kpi, 'seisaku-v1':kpi, 'souzoku-v1':kpi },
+    weekly: { ALL:weekly, 'pathflow-v1':weekly, 'shigyou-v1':weekly, 'seisaku-v1':weekly, 'souzoku-v1':weekly },
+  };
+  renderFromCache();
+}
+
+/* ─── 定時更新（4時間ごと） ─── */
+function scheduleRefresh() {
+  const now  = new Date();
+  const h    = now.getHours();
+  const next = [0,4,8,12,16,20].find(t => t > h) ?? 24;
+  const ms   = ((next - h) * 60 - now.getMinutes()) * 60000;
+  setTimeout(() => { loadAll(); scheduleRefresh(); }, ms);
+}
+
+buildTabs();
+loadAll();
+scheduleRefresh();
+</script>
+</body>
+</html>
