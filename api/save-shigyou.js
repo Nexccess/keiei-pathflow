@@ -1,153 +1,127 @@
 /**
- * api/diagnose.js  ─  keiei.pathflow.org
- * エンドポイント: /api/generate (POST)
- * Gemini API による経営状態の一次整理テキスト生成
- * モデル優先順: gemini-2.5-flash-lite → gemini-1.5-flash → gemini-1.5-flash-8b → ルールベースフォールバック
- * Path-Flow 展開手順書 v3.5 §5-2 準拠
+ * api/save-shigyou.js  ─  keiei.pathflow.org
+ * 機能: スプレッドシート書込み(11列) + Googleカレンダー仮予約 + Gmailオーナー通知
+ * Path-Flow 展開手順書 v3.5 §5-1・§3-2 準拠
  */
 
-const MODELS = [
-  'gemini-2.5-flash-lite-preview-06-17',
-  'gemini-2.5-flash-lite',
-  'gemini-1.5-flash',
-  'gemini-1.5-flash-8b',
-];
+import { google } from 'googleapis';
+import nodemailer from 'nodemailer';
 
-const INDUSTRY_JP = {
-  manufacturing:       '製造業',
-  construction:        '建設・土木',
-  wholesale_retail:    '卸売・小売',
-  food_hospitality:    '飲食・宿泊',
-  care_medical:        '介護・医療',
-  logistics:           '物流・運輸',
-  it_info:             'IT・情報',
-  professional_services: '専門サービス',
-  other:               'その他',
-};
-const SIZE_JP = {
-  '1-30':   '1〜30名',
-  '31-100': '31〜100名',
-  '101-300':'101〜300名',
-  '301+':   '301名以上',
-};
-const SALES_JP = {
-  growing:  '伸びている',
-  flat:     '横ばい',
-  declining:'下がっている',
-};
-const HR_JP = {
-  stable:    '順調',
-  struggling:'苦戦している',
-  paused:    '停止・未実施',
-};
-const DX_JP = {
-  partial: '部分的に導入',
-  siloed:  'ツールはあるが属人化',
-  none:    '未着手',
-};
+/* §5-1: SHEET_NAME・NOTIFY_EMAILはクライアントごとに更新 */
+const SHEET_NAME   = 'AI診断結果';
+const NOTIFY_EMAIL = 'info.nexccess@gmail.com';
 
-/**
- * スコア計算（内部管理用）
- * 展開手順書 §2-4 booking_complete に level プロパティを含める
- */
-function calcScore(d) {
-  let s = 0;
-  if (['flat','declining'].includes(d.sales))      s += 20;
-  if (['struggling','paused'].includes(d.hr))      s += 20;
-  if (['101-300','301+'].includes(d.size))          s += 15;
-  if (['siloed','none'].includes(d.dx))             s += 25;
-  if (['care_medical','logistics','food_hospitality','construction','manufacturing'].includes(d.industry)) s += 20;
-  return s;
-}
-function getLevel(score) {
-  if (score <= 39) return 'A';
-  if (score <= 69) return 'B';
-  return 'C';
-}
-function getLevelLabel(level) {
-  return { A:'論点未自覚層', B:'構造化予備層', C:'構造顕在層' }[level] || level;
-}
-
-function buildPrompt(d) {
-  const ind  = INDUSTRY_JP[d.industry]  || d.industry;
-  const size = SIZE_JP[d.size]          || d.size;
-  const sal  = SALES_JP[d.sales]        || d.sales;
-  const hr   = HR_JP[d.hr]              || d.hr;
-  const dx   = DX_JP[d.dx]             || d.dx;
-
-  return `あなたは中小企業のオーナー社長に寄り添う経営アドバイザーです。
-以下の経営状況に基づき、「現状の整理コメント」を3セクション構成で生成してください。
-
-【入力情報】
-- 業種：${ind}
-- 従業員規模：${size}
-- 直近の売上傾向：${sal}
-- 採用・人材定着：${hr}
-- IT・DXの現状：${dx}
-
-【出力形式（厳守）】
-以下の形式で3つのセクションを出力してください。
-
-【1. 現状の整理】
-（ここに150〜200字程度のテキスト）
-
-【2. この状態が続いた場合に見えやすい変化】
-（ここに150〜200字程度のテキスト）
-
-【3. 整理しておくと、見え方が変わること】
-（ここに150〜200字程度のテキスト）
-
-【制約事項】
-- 診断・評価・スコアリングを行わない。あくまで「整理」に徹すること
-- 「〜すべきです」「〜を導入してください」等の指示・推奨表現を使用しない
-- 経営者が「そうか、こういう状態なのか」と腑に落ちる言葉で書く
-- ビジネス書的な一般論ではなく、この会社の具体的な状況に即した言葉を使う
-- 解決策・提案・営業的表現は一切含めない
-- 「先生」や「コンサルタント」的な上から目線を使わない
-- 平易な文語体（です・ます調）で記述する
-- JSON・マークダウン記法・箇条書き記号は使用しない
-- 各セクションは連続した文章（散文）で書く`;
-}
-
-/**
- * ルールベースフォールバック（全Geminiモデル失敗時）
- */
-function fallback(d) {
-  const sal  = SALES_JP[d.sales]  || d.sales;
-  const hr   = HR_JP[d.hr]        || d.hr;
-  const dx   = DX_JP[d.dx]       || d.dx;
-  const ind  = INDUSTRY_JP[d.industry] || d.industry;
-  const size = SIZE_JP[d.size]    || d.size;
-
-  return `【1. 現状の整理】
-${ind}・${size}の企業として、売上は「${sal}」、採用・定着は「${hr}」、IT活用は「${dx}」という状態にあります。それぞれの要素は独立しているように見えて、多くの場合、内部で連動しています。まずこの全体像を俯瞰することが、次の一手を考える出発点になります。
-
-【2. この状態が続いた場合に見えやすい変化】
-現状の構造が続く場合、特定の課題が徐々に表面化してくることがあります。売上・人材・仕組みの三つが噛み合っていないと、個別の対処を繰り返すだけになりやすく、根本の構造は変わらないままになります。「なんとなく変だな」という感覚が続く場合、その感覚には根拠があることが多いです。
-
-【3. 整理しておくと、見え方が変わること】
-今の状態を「なぜそうなっているか」という視点から言語化しておくと、問題の優先順位が見えやすくなります。急いで動くよりも、まず構造を整理することで、次の判断が自然に絞られてきます。一人で抱えているうちは全体像が見えにくいことも多く、話すことで整理が進む場合もあります。`;
-}
-
-async function callGemini(model, prompt, apiKey) {
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-  const res = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: {
-        temperature: 0.75,
-        maxOutputTokens: 1024,
-      },
-    }),
+function getAuth() {
+  const raw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
+  if (!raw) throw new Error('GOOGLE_SERVICE_ACCOUNT_JSON が未設定です');
+  const sa = JSON.parse(raw);
+  return new google.auth.GoogleAuth({
+    credentials: sa,
+    scopes: [
+      'https://www.googleapis.com/auth/spreadsheets',
+      'https://www.googleapis.com/auth/calendar',
+    ],
   });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`${model} HTTP ${res.status}: ${err}`);
+}
+
+/**
+ * スプレッドシートへ1行追加（§3-2 標準11列）
+ * A:送信日時 B:LP_ID C:お名前 D:携帯電話 E:メール F:希望日時(第1)
+ * G:希望日時(第2) H:おすすめメニュー I:スコア J:レベル K:診断回答
+ */
+async function appendToSheet({ auth, lp, name, phone, email, date, date2, recommended_menu, score, level, answersStr }) {
+  const sheets = google.sheets({ version: 'v4', auth });
+  const spreadsheetId = process.env.SHIGYOU_SPREADSHEET_ID;
+  if (!spreadsheetId) throw new Error('SHIGYOU_SPREADSHEET_ID が未設定です');
+
+  const now = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
+
+  const row = [
+    now,                          // A 送信日時
+    lp || '',                      // B LP_ID
+    name || '',                    // C お名前
+    phone || '',                   // D 携帯電話
+    email || '',                   // E メールアドレス
+    date || '',                    // F 希望日時（第1）
+    date2 || '',                   // G 希望日時（第2）
+    recommended_menu || '',        // H おすすめメニュー
+    score != null ? String(score) : '', // I スコア
+    level || '',                   // J レベル
+    answersStr || '',              // K 診断回答
+  ];
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range: `${SHEET_NAME}!A1`,
+    valueInputOption: 'USER_ENTERED',
+    insertDataOption: 'INSERT_ROWS',
+    requestBody: { values: [row] },
+  });
+}
+
+/** Googleカレンダーに仮予約終日イベントを登録 */
+async function insertCalendarEvent({ auth, name, date }) {
+  const calendar   = google.calendar({ version: 'v3', auth });
+  const calendarId = process.env.CALENDAR_ID;
+  if (!calendarId) throw new Error('CALENDAR_ID が未設定です');
+
+  /* date: "yyyy-mm-dd HH:MM" → 終日イベント用に日付部分のみ抽出（ハイフン形式必須） */
+  const dateStr = date ? date.split(' ')[0] : new Date().toISOString().split('T')[0];
+
+  await calendar.events.insert({
+    calendarId,
+    requestBody: {
+      summary:     `【仮予約】${name} 様`,
+      description: `keiei.pathflow.org からの経営相談予約\n希望時間: ${date || ''}`,
+      start: { date: dateStr },
+      end:   { date: dateStr },
+    },
+  });
+}
+
+/** Gmailでオーナーに通知メールを送信 */
+async function sendOwnerMail({ name, phone, email, date, date2, score, level, answersStr }) {
+  const user     = process.env.GMAIL_USER;
+  const password = process.env.GMAIL_APP_PASSWORD;
+  if (!user || !password) {
+    console.warn('[save-shigyou] GMAIL_USER/GMAIL_APP_PASSWORD 未設定 — メール送信をスキップ');
+    return;
   }
-  const data = await res.json();
-  return data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: { user, pass: password },
+  });
+
+  const body = `
+【経営相談 仮予約のお知らせ】
+
+keiei.pathflow.org から新規の相談予約が届きました。
+
+━━ 基本情報 ━━
+お名前　　：${name}
+電　　話　：${phone}
+メール　　：${email}
+
+━━ 希望日時 ━━
+第1希望　：${date}
+第2希望　：${date2 || '（なし）'}
+
+━━ 診断結果 ━━
+スコア　　：${score}
+レベル　　：${level}
+診断回答　：${answersStr}
+
+━━━━━━━━━━━━━━━━━━
+合同会社Nexccess — Path-Flow 自動通知
+`.trim();
+
+  await transporter.sendMail({
+    from:    `"Path-Flow Keiei" <${user}>`,
+    to:      NOTIFY_EMAIL,
+    subject: `【仮予約】${name} 様 — keiei.pathflow.org`,
+    text:    body,
+  });
 }
 
 export default async function handler(req, res) {
@@ -155,43 +129,63 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { industry, size, sales, hr, dx } = req.body || {};
-  if (!industry || !size || !sales || !hr || !dx) {
-    return res.status(400).json({ error: '必須パラメータが不足しています' });
+  const {
+    lp, name, phone, email,
+    date, date2,
+    recommended_menu,
+    score, level,
+    answersStr,
+  } = req.body || {};
+
+  if (!name || !phone || !email || !date) {
+    return res.status(400).json({ error: '必須パラメータ（name / phone / email / date）が不足しています' });
   }
 
-  const d = { industry, size, sales, hr, dx };
-  const score = calcScore(d);
-  const level = getLevel(score);
-  const prompt = buildPrompt(d);
-  const apiKey = process.env.GEMINI_API_KEY;
-
-  if (!apiKey) {
-    return res.status(500).json({ error: 'GEMINI_API_KEY が設定されていません' });
+  let auth;
+  try {
+    auth = await getAuth();
+  } catch (e) {
+    console.error('[save-shigyou] auth error:', e.message);
+    return res.status(500).json({ error: 'Google認証に失敗しました: ' + e.message });
   }
 
-  let result = '';
-  let lastError = null;
+  const errors = [];
 
-  for (const model of MODELS) {
-    try {
-      result = await callGemini(model, prompt, apiKey);
-      if (result.trim()) break;
-    } catch (e) {
-      lastError = e;
-      console.error(`[diagnose] ${model} failed:`, e.message);
-    }
+  /* 1. スプレッドシート書込み */
+  try {
+    await appendToSheet({
+      auth, lp, name, phone, email, date, date2,
+      recommended_menu: recommended_menu || '（経営相談）',
+      score, level,
+      answersStr: typeof answersStr === 'string' ? answersStr : '',
+    });
+  } catch (e) {
+    console.error('[save-shigyou] sheets error:', e.message);
+    errors.push('sheets: ' + e.message);
   }
 
-  if (!result.trim()) {
-    console.warn('[diagnose] All Gemini models failed, using fallback. Last error:', lastError?.message);
-    result = fallback(d);
+  /* 2. カレンダー登録 */
+  try {
+    await insertCalendarEvent({ auth, name, date });
+  } catch (e) {
+    console.error('[save-shigyou] calendar error:', e.message);
+    errors.push('calendar: ' + e.message);
+  }
+
+  /* 3. メール通知 */
+  try {
+    await sendOwnerMail({ name, phone, email, date, date2, score, level, answersStr });
+  } catch (e) {
+    console.error('[save-shigyou] mail error:', e.message);
+    errors.push('mail: ' + e.message);
+  }
+
+  if (errors.length === 3) {
+    return res.status(500).json({ error: '全処理に失敗しました', details: errors });
   }
 
   return res.status(200).json({
-    result,
-    score,
-    level,
-    level_label: getLevelLabel(level),
+    ok: true,
+    warnings: errors.length > 0 ? errors : undefined,
   });
 }
