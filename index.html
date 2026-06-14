@@ -675,7 +675,7 @@ footer { border-top:1px solid var(--border); padding:40px 0 100px; }
   </div>
 </section>
 
-<!-- FOOTER（FRAME B 準拠） -->
+<!-- FOOTER（FRAME B 準拠：仕様書§4 標準フッターコード） -->
 <footer>
   <div class="wrapper">
     <div class="footer-inner">
@@ -686,11 +686,11 @@ footer { border-top:1px solid var(--border); padding:40px 0 100px; }
       <div class="footer-brand">Path-Flow Management Base</div>
     </div>
     <div class="footer-legal-links">
-      <a onclick="openLegalModal('modal-privacy')">プライバシーポリシー</a>
-      <a onclick="openLegalModal('modal-disclaimer')">免責事項</a>
-      <a onclick="openLegalModal('modal-antisocial')">反社会的勢力への対応</a>
-      <a onclick="openLegalModal('modal-conflict')">利益相反管理方針</a>
-      <a onclick="openLegalModal('modal-compliance')">コンプライアンス方針</a>
+      <a href="https://www.nexccess.com/#legal" target="_blank" rel="noopener">個人情報保護方針</a>
+      <a href="https://www.nexccess.com/#legal" target="_blank" rel="noopener">反社会的勢力への基本方針</a>
+      <a href="https://www.nexccess.com/#legal" target="_blank" rel="noopener">免責事項</a>
+      <a href="https://www.nexccess.com/#legal" target="_blank" rel="noopener">利益相反管理方針</a>
+      <a href="https://www.nexccess.com/#legal" target="_blank" rel="noopener">コンプライアンス・その他方針</a>
     </div>
   </div>
 </footer>
@@ -708,48 +708,6 @@ footer { border-top:1px solid var(--border); padding:40px 0 100px; }
     <div class="modal-tag" id="modal-tag"></div>
     <div class="modal-title" id="modal-title"></div>
     <div class="modal-body" id="modal-body"></div>
-  </div>
-</div>
-
-<!-- リーガルモーダル群（FRAME C 準拠） -->
-<div id="modal-privacy" class="modal-overlay" onclick="closeLegalOutside(event,'modal-privacy')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeLegalModal('modal-privacy')">✕</button>
-    <div class="modal-tag">Privacy Policy</div>
-    <div class="modal-title">個人情報保護方針（プライバシーポリシー）</div>
-    <div class="modal-body">合同会社Nexccess（以下「当社」）は、お客様の個人情報の保護を重要な責務と認識し、個人情報保護法その他関連法令を遵守し、適切に取り扱います。収集した個人情報は、サービス提供・連絡・改善の目的にのみ使用し、第三者への無断提供は行いません。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
-  </div>
-</div>
-<div id="modal-disclaimer" class="modal-overlay" onclick="closeLegalOutside(event,'modal-disclaimer')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeLegalModal('modal-disclaimer')">✕</button>
-    <div class="modal-tag">Disclaimer</div>
-    <div class="modal-title">免責事項</div>
-    <div class="modal-body">本サイトおよびAI診断ツールの情報は一次整理を目的とするものであり、法的・財務的判断の根拠となるものではありません。当社は本サービスの利用により生じた損害について、いかなる責任も負いかねます。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
-  </div>
-</div>
-<div id="modal-antisocial" class="modal-overlay" onclick="closeLegalOutside(event,'modal-antisocial')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeLegalModal('modal-antisocial')">✕</button>
-    <div class="modal-tag">Anti-Social Forces</div>
-    <div class="modal-title">反社会的勢力への対応</div>
-    <div class="modal-body">当社は、反社会的勢力に対して毅然とした態度で臨み、一切の関係を遮断します。反社会的勢力からの不当要求に対しては、組織全体で対応し、必要に応じて警察・弁護士等の外部機関と連携します。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
-  </div>
-</div>
-<div id="modal-conflict" class="modal-overlay" onclick="closeLegalOutside(event,'modal-conflict')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeLegalModal('modal-conflict')">✕</button>
-    <div class="modal-tag">Conflict of Interest</div>
-    <div class="modal-title">利益相反管理方針</div>
-    <div class="modal-body">当社は、お客様の利益を最優先に考え、利益相反が生じる可能性のある案件については適切に開示・管理します。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
-  </div>
-</div>
-<div id="modal-compliance" class="modal-overlay" onclick="closeLegalOutside(event,'modal-compliance')">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeLegalModal('modal-compliance')">✕</button>
-    <div class="modal-tag">Compliance</div>
-    <div class="modal-title">コンプライアンス・その他方針</div>
-    <div class="modal-body">当社は、法令・社内規程・社会規範を遵守し、公正かつ誠実な企業活動を行います。詳細はコーポレートサイト（nexccess.com/#legal）をご参照ください。</div>
   </div>
 </div>
 
@@ -895,24 +853,10 @@ document.getElementById('modal-column').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeColumnModal();
 });
 
-/* ─── リーガルモーダル（FRAME C）─── */
-function openLegalModal(id) {
-  var el = document.getElementById(id);
-  if (el) { el.classList.add('open'); document.body.style.overflow = 'hidden'; }
-}
-function closeLegalModal(id) {
-  var el = document.getElementById(id);
-  if (el) { el.classList.remove('open'); document.body.style.overflow = ''; }
-}
-function closeLegalOutside(e, id) {
-  if (e.target === document.getElementById(id)) closeLegalModal(id);
-}
+/* ─── ESCキーでコラムモーダルを閉じる ─── */
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.open').forEach(function(el) {
-      el.classList.remove('open');
-    });
-    document.body.style.overflow = '';
+    closeColumnModal();
   }
 });
 
