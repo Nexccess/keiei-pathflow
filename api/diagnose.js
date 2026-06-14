@@ -1,6 +1,6 @@
 /**
  * api/diagnose.js  ─  keiei.pathflow.org
- * エンドポイント: /api/generate (POST)
+ * エンドポイント: /api/diagnose (POST)
  * index.htmlから日本語値が直接送られてくる前提
  * Geminiモデル優先順: gemini-2.5-flash-lite → gemini-1.5-flash → gemini-1.5-flash-8b → fallback
  * Path-Flow 展開手順書 v3.5 §5-2 準拠
